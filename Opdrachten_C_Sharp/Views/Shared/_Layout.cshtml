@@ -11,7 +11,6 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Opdrachten_C_Sharp</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -19,10 +18,71 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+                        <li class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                Opdracht 1
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a asp-controller="Opdracht1" asp-action="Opdracht1_1">Opdracht 1.1</a></li>
+                                <li><a asp-controller="Opdracht1" asp-action="Opdracht1_2">Opdracht 1.2</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                Opdracht 2
+                            </button>
+                            <ul class="dropdown-menu">
+                                @*<li><a asp-controller="Opdracht1" asp-action="Opdracht1_1">Opdracht 2.1</a></li>
+                                <li><a asp-controller="Opdracht1" asp-action="Opdracht1_2">Opdracht 2.2</a></li>*@
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                Opdracht 3
+                            </button>
+                            <ul class="dropdown-menu">
+                                @*<li><a asp-controller="Opdracht1" asp-action="Opdracht1_1">Opdracht 2.1</a></li>
+                                <li><a asp-controller="Opdracht1" asp-action="Opdracht1_2">Opdracht 2.2</a></li>*@
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                Opdracht 4
+                            </button>
+                            <ul class="dropdown-menu">
+                                @*<li><a asp-controller="Opdracht1" asp-action="Opdracht1_1">Opdracht 2.1</a></li>
+                                <li><a asp-controller="Opdracht1" asp-action="Opdracht1_2">Opdracht 2.2</a></li>*@
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                Opdracht 5
+                            </button>
+                            <ul class="dropdown-menu">
+                                @*<li><a asp-controller="Opdracht1" asp-action="Opdracht1_1">Opdracht 2.1</a></li>
+                                <li><a asp-controller="Opdracht1" asp-action="Opdracht1_2">Opdracht 2.2</a></li>*@
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                Opdracht 6
+                            </button>
+                            <ul class="dropdown-menu">
+                                @*<li><a asp-controller="Opdracht1" asp-action="Opdracht1_1">Opdracht 2.1</a></li>
+                                <li><a asp-controller="Opdracht1" asp-action="Opdracht1_2">Opdracht 2.2</a></li>*@
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                Opdracht 7
+                            </button>
+                            <ul class="dropdown-menu">
+                                @*<li><a asp-controller="Opdracht1" asp-action="Opdracht1_1">Opdracht 2.1</a></li>
+                                <li><a asp-controller="Opdracht1" asp-action="Opdracht1_2">Opdracht 2.2</a></li>*@
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -37,7 +97,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - Opdrachten_C_Sharp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2021 - ROC van Twente (Marcel Roesink)
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
