@@ -1,0 +1,23 @@
+﻿<style>
+    td {
+        padding: 3px;
+    }
+</style>
+<form method="get">
+    <table class="table-active">
+        <tr>
+            <td>Voornaam</td>
+            <td><input name="firstName" required/></td>
+        </tr>
+                <tr>
+            <td>Geboortedatum</td>
+            <td><input type="date" name="birthDate" required/></td>
+        </tr>
+    </table>
+    <input style="margin:5px;" class="btn-info" type="submit" value="Bereken lengte"/>
+</form>
+
+@if(ViewBag.Zodiac != null)
+{
+    <h2>@ViewBag.FirstName, jouw sterrenbeeld is @ViewBag.Zodiac.</h2>
+}

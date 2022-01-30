@@ -20,7 +20,7 @@ namespace Opdrachten_C_Sharp.Controllers
              */
             string info = "<h4>Marcel Roesink</h4>";
             info += "<br/>Laan van Scherpzicht";
-            info += "<br/>7890DW  Scherpenzeel";
+            info += "<br/>7890 DW  Scherpenzeel";
             info += "<br/>Leeftijd: 63";
             ViewBag.Info = info;
             return View();

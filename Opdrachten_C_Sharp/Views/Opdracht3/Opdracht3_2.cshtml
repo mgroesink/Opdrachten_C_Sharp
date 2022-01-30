@@ -1,0 +1,23 @@
+﻿<style>
+    td {
+        padding: 3px;
+    }
+</style>
+<form method="get">
+    <table class="table-active">
+        <tr>
+            <td>Geboortedatum vrouw</td>
+            <td><input type="date" name="birthDateWoman" required /></td>
+        </tr>
+        <tr>
+            <td>Geboortedatum man</td>
+            <td><input type="date" name="birthDateMan" required /></td>
+        </tr>
+    </table>
+    <input style="margin:5px;" class="btn-info" type="submit" value="Bereken verschil"/>
+</form>
+
+@if(ViewBag.DaysBetween != null)
+{
+    <h2>Het leeftijdsverschil is @ViewBag.DaysBetween dagen .</h2>
+}

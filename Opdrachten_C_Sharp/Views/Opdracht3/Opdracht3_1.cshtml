@@ -1,0 +1,27 @@
+﻿<style>
+    td {
+        padding: 3px;
+    }
+</style>
+<form method="get">
+    <table class="table-active">
+        <tr>
+            <td>Voornaam</td>
+            <td><input name="voornaam" /></td>
+        </tr>
+        <tr>
+            <td>Tussenvoegsels</td>
+            <td><input name="tussenvoegsels" /></td>
+        </tr>
+        <tr>
+            <td>Achternaam</td>
+            <td><input name="achternaam" /></td>
+        </tr>
+    </table>
+    <input style="margin:5px;" class="btn-info" type="submit" value="Bereken lengte"/>
+</form>
+
+@if(ViewBag.lengte > 0)
+{
+    <h2>De totale lengte van jouw naam is @ViewBag.lengte tekens.</h2>
+}
