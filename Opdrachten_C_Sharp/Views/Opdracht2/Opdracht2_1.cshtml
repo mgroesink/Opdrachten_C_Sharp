@@ -1,0 +1,93 @@
+﻿<style>
+    img {
+        margin: 50px;
+    }
+
+    td {
+        padding: 3px;
+    }
+
+    .box {
+        padding: 10px;
+        width: 75%;
+        border: 2px black solid;
+        border-radius: 25px;
+    }
+
+    .underweight {
+        background-color: lightblue;
+        color: darkblue;
+    }
+
+    .normal {
+        background-color: lightgreen;
+        color: darkgreen;
+    }
+
+    .overweight {
+        background-color: orangered;
+        color: black;
+    }
+
+    .obesitas {
+        background-color: darkgray;
+        color: white;
+    }
+</style>
+<script>
+    function updateInput(value){
+        value = value.replace(",",".");
+        document.getElementById("height").value = value;
+    }
+</script>
+<form method="get">
+    <table class="table-active">
+        <tr>
+            <td>Gewicht in kg. (1 dec.)</td>
+            <td><input id="height" name="weight" required onchange="updateInput(this.value)" /></td>
+        </tr>
+        <tr>
+            <td>Lengte in cm.</td>
+            <td><input type="number" min="100" max="250" name="length" required /></td>
+        </tr>
+    </table>
+    <input style="margin:50px 0;" class="btn-lg btn-info" type="submit" value="Bereken BMI" />
+</form>
+
+@if (ViewBag.BMI != null)
+{
+    var bmi = ((double)ViewBag.BMI).ToString("n2");
+    if (ViewBag.BMI < 18.5)
+    {
+        <div class="box underweight">
+            <h1>Uw BMI is @bmi</h1>
+            <h5>@ViewBag.Advice</h5>
+        </div>
+    }
+    else if (ViewBag.BMI < 25)
+    {
+        <div class="box normal">
+            <h1>Uw BMI is @bmi</h1>
+        </div>
+    }
+    else if (ViewBag.BMI < 30)
+    {
+        <div class="box overweight">
+            <h1>Uw BMI is @bmi</h1>
+            <h5>@ViewBag.Advice</h5>
+
+        </div>
+    }
+    else
+    {
+        <div class="box obesitas">
+            <h1>Uw BMI is @bmi</h1>
+            <h5>@ViewBag.Advice</h5>
+
+        </div>
+    }
+
+}
+
+
+

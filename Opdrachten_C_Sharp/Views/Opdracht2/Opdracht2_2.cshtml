@@ -1,0 +1,65 @@
+﻿<style>
+    td {
+        padding: 3px;
+    }
+    form {
+        margin-bottom:100px;
+    }
+</style>
+
+<form method="get">
+    <table class="table-active">
+        <tr>
+            <td>Eerste getal</td>
+            <td><input type="number" name="number1" /></td>
+        </tr>
+        <tr>
+            <td>Tweede getal</td>
+            <td><input type="number" name="number2" /></td>
+        </tr>
+    </table>
+    <input style="margin:5px;" class="btn-info" type="submit" value="Bereken"/>
+</form>
+
+@if(ViewBag.Number1 != null && ViewBag.Number2 != null)
+{
+    double num1 = (double)ViewBag.Number1;
+    double num2 = (double)ViewBag.Number2;
+    <h2>Berekeningen voor @ViewBag.Number1 en @ViewBag.Number2</h2>
+    <p>@ViewBag.Number1 + @ViewBag.Number2 = @(num1 + num2)</p>
+    <p>@ViewBag.Number1 - @ViewBag.Number2 = @(num1 - num2)</p>
+    <p>@ViewBag.Number2 - @ViewBag.Number1 = @(num2 - num1)</p>
+    <p>@ViewBag.Number1 x @ViewBag.Number2 = @(num1 * num2)</p>
+    @if(num2 == 0)
+    {
+        <p class=alert-danger>Delen door 0 is flauwekul</p>
+    }
+    else
+    {
+        <p>@ViewBag.Number1 / @ViewBag.Number2 = @(num1 / num2)</p>
+    }
+    @if(num1 == 0)
+    {
+        <p class=alert-danger>Delen door 0 is flauwekul</p>
+    }
+    else
+    {
+        <p>@ViewBag.Number2 / @ViewBag.Number1 = @(num2 / num1)</p>
+    }
+    @if (num2 == 0)
+    {
+        <p class=alert-danger>Delen door 0 is flauwekul</p>
+    }
+    else
+    {
+        <p>Restant van @ViewBag.Number1 / @ViewBag.Number2 = @(num1 % num2)</p>
+    }
+    @if (num1 == 0)
+    {
+        <p class=alert-danger>Delen door 0 is flauwekul</p>
+    }
+    else
+    {
+        <p>Restant van @ViewBag.Number2 / @ViewBag.Number1 = @(num2 % num1)</p>
+    }
+}

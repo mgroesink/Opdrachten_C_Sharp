@@ -32,7 +32,7 @@ namespace Opdrachten_C_Sharp.Controllers
             if (firstName != "" && birthDate != null)
             {
                 var zodiac = Enum.Parse(typeof(Zodiacs), Zodiac((DateTime)birthDate));
-                ViewBag.Zodiac = zodiac;
+                ViewBag.Zodiac = zodiac.ToString().ToLower();
                 ViewBag.FirstName = firstName;
             }
             return View();

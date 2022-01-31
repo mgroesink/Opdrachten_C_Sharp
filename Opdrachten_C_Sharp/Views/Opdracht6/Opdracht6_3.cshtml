@@ -1,4 +1,7 @@
 ﻿<style>
+    img{
+        margin:50px;
+    }
     td {
         padding: 3px;
     }
@@ -14,10 +17,13 @@
             <td><input type="date" name="birthDate" required/></td>
         </tr>
     </table>
-    <input style="margin:5px;" class="btn-info" type="submit" value="Bereken lengte"/>
+    <input style="margin:50px 0;" class="btn-lg btn-info" type="submit" value="Toon sterrenbeeld"/>
 </form>
 
 @if(ViewBag.Zodiac != null)
 {
+    string img = @ViewBag.Zodiac + ".png";
     <h2>@ViewBag.FirstName, jouw sterrenbeeld is @ViewBag.Zodiac.</h2>
+    <img src="~/images/zodiac/@img"/>
+    <a href="https://www.mediumchat.nl/sterrenbeelden/@ViewBag.Zodiac" target="_blank">Meer weten over @ViewBag.Zodiac?</a>
 }
