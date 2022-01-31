@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Opdrachten_C_Sharp.Utility;
 using System;
+using System.Text;
 
 namespace Opdrachten_C_Sharp.Controllers
 {
@@ -35,6 +36,30 @@ namespace Opdrachten_C_Sharp.Controllers
                 var zodiac = Enum.Parse(typeof(Zodiacs), Zodiac((DateTime)birthDate));
                 ViewBag.Zodiac = zodiac.ToString().ToLower();
                 ViewBag.FirstName = firstName;
+            }
+            return View();
+        }
+
+        public IActionResult Opdracht6_7(int numberOfItems = 0)
+        {
+            /*
+            * Schrijf een programma dat het opgegeven aantal fibonacci getallen laat zien. 
+            */
+            if (numberOfItems > 0)
+            {
+                ViewBag.Count = numberOfItems;
+                long first = 0;
+                long second = 1;
+                var fibonacci = new StringBuilder("0<br/>1<br/>");
+                for (var i = 0; i < numberOfItems - 2; i++)
+                {
+                    long sum = first + second;
+                    fibonacci.Append(sum + "<br/>");
+                    first = second;
+                    second = sum;
+                }
+                ViewBag.Fibonacci = fibonacci.ToString().Substring(0, fibonacci.Length - 2);
+
             }
             return View();
         }

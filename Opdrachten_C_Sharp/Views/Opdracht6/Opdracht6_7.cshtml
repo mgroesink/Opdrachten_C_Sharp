@@ -1,0 +1,15 @@
+﻿<style>
+    form {
+        margin-bottom: 
+    }
+</style>
+<form>
+    <h2>Hoeveel fibonacci getallen wil je</h2>
+    <input type="number" min="1" max="50" name="numberOfItems" />
+    <input type="submit" class="btn-info" value="Genereer"/>
+</form>
+@if (ViewBag.Count != null)
+{
+    <h3>De eerste @ViewBag.Count fibonacci getallen</h3>
+    @Html.Raw(ViewBag.Fibonacci)
+}
