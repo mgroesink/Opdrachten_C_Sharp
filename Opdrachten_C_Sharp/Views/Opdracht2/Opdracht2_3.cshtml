@@ -1,0 +1,27 @@
+﻿<style>
+    td {
+        padding: 3px;
+    }
+    form {
+        margin-bottom:50px;
+    }
+</style>
+
+<form method="get">
+    <table class="table table-active">
+        <tr>
+            <td>Naam</td>
+            <td><input type="text" name="name" required /></td>
+        </tr>
+        <tr>
+            <td>Geboortedatum</td>
+            <td><input type="date" name="birthDate" required/></td>
+        </tr>
+    </table>
+    <input style="margin:5px 0;" class="btn-info" type="submit" value="Bereken leeftijd"/>
+</form>
+
+@if(ViewBag.Age != null)
+{
+    <h2>@ViewBag.Name is @ViewBag.Age jaar oud.</h2>
+}

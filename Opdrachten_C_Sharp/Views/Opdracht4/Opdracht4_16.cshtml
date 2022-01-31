@@ -1,0 +1,66 @@
+﻿<style>
+    td {
+        padding: 3px;
+    }
+
+    .weekend {
+        background-color: yellow;
+        color: red;
+    }
+</style>
+
+@{
+    var weekend = ((bool)@ViewData["weekend"]) ? "weekend" : "";
+    var leapyear = ((bool)@ViewData["leapyear"]) ? "Ja" : "Nee";
+}
+<table class="table table-bordered @weekend">
+    <thead class="table-dark">
+        <tr>
+            <td colspan="2"><h2>Informatie over de huidige datum</h2></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Jaar</th>
+            <td>@ViewData["year"]</td>
+        </tr>
+        <tr>
+            <th>Maand</th>
+            <td>@ViewData["month"]</td>
+        </tr>
+        <tr>
+            <th>Dag van de week</th>
+            <td>@ViewData["day"]</td>
+        </tr>
+        <tr>
+            <th>Dag van de maand</th>
+            <td>@ViewData["daynumber"]</td>
+        </tr>
+        <tr>
+            <th>Weeknummer</th>
+            <td>@ViewData["weeknumber"]</td>
+        </tr>
+        <tr>
+            <th>Dag van het jaar</th>
+            <td>@ViewData["dayofyear"]</td>
+        </tr>
+        <tr>
+            <th>Schrikkeljaar</th>
+            <td>@leapyear</td>
+        </tr>
+        <tr>
+            <th>Soort dag</th>
+            @if (weekend == "weekend")
+            {
+                <td>Weekend</td>
+            }
+            else
+            {
+                <td>Werkdag</td>
+            }
+
+        </tr>
+    </tbody>
+
+</table>
+

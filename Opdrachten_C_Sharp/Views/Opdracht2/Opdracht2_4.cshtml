@@ -1,0 +1,77 @@
+﻿<style>
+    td {
+        padding: 3px;
+    }
+
+    form {
+        margin-bottom: 50px;
+    }
+</style>
+
+<form method="post">
+    <table class="table table-active">
+        <tr>
+            <td>Naam</td>
+            <td><input type="text" name="name" required /></td>
+        </tr>
+        <tr>
+            <td>Basisprijs</td>
+            <td><input type="number" name="basicprice" required /></td>
+        </tr>
+        <tr>
+            <td>Metallic</td>
+            <td><input type="checkbox" name="options" value="metalic" checked /></td>
+        </tr>
+        <tr>
+            <td>Leren bekleding</td>
+            <td><input type="checkbox" name="options" value="leather"  checked /></td>
+        </tr>
+        <tr>
+            <td>Automaat</td>
+            <td><input type="checkbox" name="options"  value="auto"  checked/></td>
+        </tr>
+    </table>
+    <input style="margin:5px 0;" class="btn-info" type="submit" value="Bestel" />
+</form>
+
+@if (ViewBag.Name != null && ViewBag.Name != "")
+{
+    var metalic = ViewBag.Metalic ? "Ja" : "Nee";
+    var leather = ViewBag.Leather ? "Ja" : "Nee";
+    var auto = ViewBag.Auto ? "Ja" : "Nee";
+    <h2>Rekening voor @ViewBag.Name</h2>
+    <br />
+    <table class="table table-bordered">
+
+        <tr>
+            <td>Basisprijs</td>
+            <td>@ViewBag.BasicPrice</td>
+        </tr>
+        <tr>
+            <td>Metallic</td>
+
+            <td>@metalic</td>
+        </tr>
+        <tr>
+            <td>Leren bekleding</td>
+            <td>@leather</td>
+        </tr>
+        <tr>
+            <td>Automaat</td>
+            <td>@auto</td>
+        </tr>
+        <tr>
+            <td>Totaal exclusief BTW</td>
+            <td>@ViewBag.TotalEx</td>
+        </tr>
+        <tr>
+            <td>BTW</td>
+            <td>@ViewBag.BTW</td>
+        </tr>
+        <tr>
+            <td>Totaal incl. BTW</td>
+            <td>@ViewBag.TotalIncl</td>
+        </tr>
+    </table>
+}
+

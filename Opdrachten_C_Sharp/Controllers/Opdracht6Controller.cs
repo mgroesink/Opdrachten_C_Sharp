@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Opdrachten_C_Sharp.Utility;
 using System;
 
 namespace Opdrachten_C_Sharp.Controllers
@@ -35,6 +36,37 @@ namespace Opdrachten_C_Sharp.Controllers
                 ViewBag.Zodiac = zodiac.ToString().ToLower();
                 ViewBag.FirstName = firstName;
             }
+            return View();
+        }
+
+        public IActionResult Opdracht6_14()
+        {
+            /*
+                Maak een programma met als naam Vandaag dat informatie geeft over de huidige dag. De volgende informatie moet worden getoond:
+                • Het huidige jaar
+                • De huidige maand (als woord)
+                • De huidige dag (als woord)
+                • De hoeveelste dag van de maand het is
+                • Het huidige weeknummer
+                • De hoeveelste dag van het jaar het is
+                • Of het huidige jaar is schrikkeljaar is
+                • Of de huidige dag een werkdag is of een dag in het weekend
+
+                Geef alle informatie weer in rood op een gele achtergrond als
+                de huidige dag in het weekend valt 
+
+
+             */
+            var today = DateTime.Today;
+            ViewData["today"] = today.ToLongDateString();
+            ViewData["year"] = today.Year;
+            ViewData["month"] = today.ToString("MMMM");
+            ViewData["day"] = today.ToString("dddd");
+            ViewData["daynumber"] = today.Day.ToString();
+            ViewData["weeknumber"] = today.Weeknumber();
+            ViewData["dayofyear"] = today.DayOfYear.ToString();
+            ViewData["weekend"] = IsWeekend(today);
+            ViewData["leapyear"] = IsLeapYear(today);
             return View();
         }
 
@@ -103,5 +135,35 @@ namespace Opdrachten_C_Sharp.Controllers
             return zodiac.ToString();
 
         }
+
+        private bool IsLeapYear()
+        {
+            return DateTime.IsLeapYear(DateTime.Now.Year);
+        }
+        private bool IsLeapYear(int year)
+        {
+            if(year < 50)
+            {
+                year = int.Parse(DateTime.Now.Year.ToString().Substring(0, 2)) * 100 + year;
+            }
+            else if(year < 100)
+            {
+                year = int.Parse(DateTime.Now.Year.ToString().Substring(0, 2)) * 100 - 1 + year;
+            }
+
+            return DateTime.IsLeapYear(year);
+        }
+
+        private bool IsLeapYear(DateTime date)
+        {
+            return DateTime.IsLeapYear(date.Year);
+        }
+
+        private bool IsWeekend(DateTime date)
+        {
+            return date.DayOfWeek ==
+                DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday;
+        }
+
     }
 }
