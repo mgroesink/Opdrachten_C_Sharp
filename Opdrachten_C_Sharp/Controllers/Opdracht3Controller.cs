@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Opdrachten_C_Sharp.Utility;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace Opdrachten_C_Sharp.Controllers
@@ -23,7 +24,7 @@ namespace Opdrachten_C_Sharp.Controllers
 
             // Maak een nieuwe string aan waarin de 3 gegevens aan elkaar worden
             // vastgeplakt
-            var naam = voornaam +tussenvoegsels + achternaam;
+            var naam = voornaam + tussenvoegsels + achternaam;
             // Vervang alle spaties door een lege string
             naam = naam.Replace(" ", "");
             // Bepaal de lengte van de string en sla deze op in de viewbag
@@ -33,7 +34,7 @@ namespace Opdrachten_C_Sharp.Controllers
             return View();
         }
 
-        public IActionResult Opdracht3_2(DateTime? birthDateWoman , DateTime? birthDateMan)
+        public IActionResult Opdracht3_2(DateTime? birthDateWoman, DateTime? birthDateMan)
         {
             /*
             Maak een programma dat het leeftijdsverschil in dagen berekent 
@@ -43,10 +44,69 @@ namespace Opdrachten_C_Sharp.Controllers
             Gebruik de functie voor de absolute waarde om ervoor te zorgen 
             dat altijd een positief getal wordt weergegeven.
             */
-            if(birthDateWoman != null && birthDateMan != null)
+            if (birthDateWoman != null && birthDateMan != null)
             {
                 var daysBetween = ((DateTime)birthDateMan).Subtract((DateTime)birthDateWoman).Days;
-                ViewBag.DaysBetween = Math.Abs(daysBetween);    
+                ViewBag.DaysBetween = Math.Abs(daysBetween);
+            }
+            return View();
+        }
+
+        public IActionResult Opdracht3_3(int width , int height , int length)
+        {
+            /*
+             * Maak een programma dat de inhoud van een kubus berekent. 
+             * De gebruiker voert hoogte, lengte en breedte in en de inhoud 
+             * wordt weergegeven met 2 decimalen.
+             */
+            var volume = width * height * length;
+            ViewBag.Volume = volume;
+            ViewBag.Height = height;
+            ViewBag.Width = width;
+            ViewBag.Length = length;
+            return View();
+        }
+
+        public IActionResult Opdracht3_4(double euro = 0)
+        {
+            /*
+             * Maak een programma dat een geldbedrag in euro’s omrekent naar 5 door jou te 
+             * kiezen valuta. Het bedrag in euro’s moet door de gebruiker worden ingevoerd. 
+             * Gebruik de koersen die gelden op de dag dat de opdracht wordt gemaakt.
+             */
+
+            var currencies = new Dictionary<string , double>();
+            currencies["Amerikaanse dollar"] = euro * 1.13;
+            currencies["Zweedse kroon"] = euro * 10.44;
+            currencies["Zuid-Afrikaanse rand"] = euro * 17.16;
+            currencies["Antilliaanse gulden"] = euro * 2;
+            currencies["Braziliaanse real"] = euro * 5.95;
+            ViewBag.Currency = currencies;
+            ViewBag.Money = euro;
+            return View();
+        }
+
+        public IActionResult Opdracht3_5(double length , double width)
+        {
+            /*
+             * Maak een programma dat berekent hoeveel het stallen van een camper kost.
+             * De verhuurder rekent een prijs van 1,50 euro per vierkante meter 
+             * per maand. 
+             * Als een contract voor minimaal 3 jaar wordt aangegaan wordt 
+             * een korting van 10% van het bedrag verstrekt en als een contract 
+             * van minimaal 2 jaar wordt aangegaan bedraagt de korting 5%.
+             * Als invoer wordt de breedte en de lengte van een camper opgegeven 
+             * en als uitvoer moet worden getoond wat de kosten zijn 
+             * voor 1 jaar stalling, voor 2 jaar stalling en voor 3 jaar stalling.
+             */
+            var squarem2 = length * width;
+            if(squarem2 > 0)
+            {
+                ViewBag.Width = width;
+                ViewBag.Length = length;
+                ViewBag.Cost1 = 12 * 1.5 * squarem2;
+                ViewBag.Cost2 = 24 * 1.5 * squarem2 * .95; // 5% discount
+                ViewBag.Cost3 = 36 * 1.5 * squarem2 * .9; // 10% discount
             }
             return View();
         }

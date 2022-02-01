@@ -1,0 +1,25 @@
+﻿<style>
+    td {
+        padding:5px;
+    }
+    input[type=submit] {
+        margin: 25px 0;
+    }
+    table {
+        width: 60%;
+    }
+</style>
+<form>
+    <p>Geef het om te rekenen bedrag in euro's: 
+        <input type="text" name="euro" value="@ViewBag.Money"/></p>
+        <input type="submit" value="Bereken"/>
+</form>
+<table class="table table-bordered">
+    @foreach(var c in (Dictionary<string,double>)ViewBag.Currency)
+    {
+        <tr>
+            <th>@c.Key</th>
+            <td>@c.Value.ToString("n2")</td>
+        </tr>
+    }
+</table>

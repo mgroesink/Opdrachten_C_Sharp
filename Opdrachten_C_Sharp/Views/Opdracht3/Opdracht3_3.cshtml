@@ -1,0 +1,33 @@
+﻿<form method="get">
+    <table class="table table-active">
+        <tr>
+            <td>
+                Lengte
+            </td>
+            <td>
+                <input type="number" min="1" required name="length" value="@ViewBag.Length"/>
+            </td>
+        </tr>
+                <tr>
+            <td>
+                Hoogte
+            </td>
+            <td>
+                <input type="number" min="1" required name="height" value="@ViewBag.Height"/>
+            </td>
+        </tr>
+                <tr>
+            <td>
+                Breedte
+            </td>
+            <td>
+                <input type="number" min="1" required name="width" value="@ViewBag.Width"/>
+            </td>
+        </tr>
+    </table>
+    <input class="btn btn-info" type="submit" value="Bereken inhoud"/>
+</form>
+@if(ViewBag.Volume > 0)
+{
+    <h2>De inhoud van een kubus van h @ViewBag.Height x l @ViewBag.Length x w @ViewBag.Width = @ViewBag.Volume</h2>
+}

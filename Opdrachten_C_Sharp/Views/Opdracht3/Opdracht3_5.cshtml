@@ -1,0 +1,41 @@
+﻿<style>
+    td {
+        padding: 3px;
+    }
+    form {
+        margin-bottom:100px;
+    }
+</style>
+
+<form method="get">
+    <table class="table table-active">
+        <tr>
+            <td>Lengte</td>
+            <td><input type="text" required name="length" value="@ViewBag.Length"/></td>
+        </tr>
+        <tr>
+            <td>Breedte</td>
+            <td><input type="text" required name="width" value="@ViewBag.Width" /></td>
+        </tr>
+    </table>
+    <input style="margin:5px;" class="btn-info" type="submit" value="Bereken tarieven"/>
+</form>
+
+@if(ViewBag.Width != null)
+{
+        <table class="table table-bordered">
+        <tr>
+            <td>Kosten voor 1 jaar <br/> Geen korting
+            </td>
+            <td>@ViewBag.Cost1.ToString("C")</td>
+        </tr>
+        <tr>
+            <td>Kosten voor 2 jaar <br/> 5% korting</td>
+            <td>@ViewBag.Cost2.ToString("C")</td>
+        </tr>
+                <tr>
+            <td>Kosten voor 3 jaar <br/> 10% korting</td>
+            <td>@ViewBag.Cost3.ToString("C")</td>
+        </tr>
+    </table>
+}
