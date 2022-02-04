@@ -10,6 +10,7 @@ namespace Opdrachten_C_Sharp.Controllers
     {
         public IActionResult Opdracht1_1()
         {
+            
             /*
              Schrijf een programma dat de volgende informatie van jou op het scherm laat zien:
                     •  Jouw volledige naam

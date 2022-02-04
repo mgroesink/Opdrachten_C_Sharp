@@ -1,12 +1,49 @@
-﻿@DateTime.Now
+﻿@{
+    string weekendcolor = "";
+    if(ViewBag.Weekend == "Ja")
+    {
+        weekendcolor = "yellowOnRed";
+    }
+    else
+    {
+        weekendcolor = "";
+    }
+}
 
-<table class="table table-dark">
+<form method="get">
+    Selecteer de gewenste datum 
+    <input type="date" name="date" />
+    <input class="btn btn-primary" type="submit" value="Toon info datum"/>
+</form>
+
+<table class="table table-bordered @weekendcolor">
     <tr>
         <td>Jaar</td>
         <td>@ViewBag.Year</td>
     </tr>
-        <tr>
+    <tr>
         <td>Maand</td>
         <td>@ViewBag.Month</td>
+    </tr>
+    <tr>
+        <td>Dag</td>
+        <td>@ViewBag.Day</td>
+    </tr>
+    <tr>
+        <td>Weeknummer</td>
+        <td>@ViewBag.Weeknumber</td>
+    </tr>
+    <tr>
+        <td>Dag van jaar</td>
+        <td>@ViewBag.Daynumber</td>
+    </tr>
+        <tr>
+        <td>Schrikkeljaar</td>
+        <td>@ViewBag.LeapYear</td>
+    </tr>
+
+        <tr>
+        <td>Weekend</td>
+        <td>@ViewBag.Weekend</td>
     </tr>
 </table>
