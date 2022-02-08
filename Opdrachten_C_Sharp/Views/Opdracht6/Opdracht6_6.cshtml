@@ -1,0 +1,19 @@
+﻿<form method="get">
+    <table class="table">
+        <tr>
+            <td>Basisgetal</td>
+            <td><input type="number" required name="baseNumber"/></td>
+        </tr>
+                <tr>
+            <td>Macht</td>
+            <td><input type="number" required name="power"/></td>
+        </tr>
+    </table>
+    <input class="btn-primary" type="submit"/>
+</form>
+
+@if(ViewBag.Result != 0)
+{
+    <p>De uitkomst is @ViewBag.Result</p>
+
+}

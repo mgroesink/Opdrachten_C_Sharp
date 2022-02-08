@@ -28,6 +28,17 @@ namespace Opdrachten_C_Sharp.Controllers
             return View();
         }
 
+        public IActionResult Opdracht6_1()
+        {
+            /*
+             * Schrijf een methode die als tekst retourneert
+             * Hallo allemaal wat leuk dat jullie er zijn
+             */
+
+            ViewBag.Text = StaticMethods.LuizenMoeder();
+            return View();
+        }
+
         public IActionResult Opdracht6_3(string firstName,
             DateTime? birthDate)
         {
@@ -37,6 +48,15 @@ namespace Opdrachten_C_Sharp.Controllers
                 ViewBag.Zodiac = zodiac.ToString().ToLower();
                 ViewBag.FirstName = firstName;
             }
+            return View();
+        }
+
+        public IActionResult Opdracht6_6(int baseNumber = 0, int power = 0)
+        {
+
+            // Schrijf een programma voor machtverheffen met 2 getallen.
+
+            ViewBag.Result = StaticMethods.Power(baseNumber, power);
             return View();
         }
 
@@ -167,11 +187,11 @@ namespace Opdrachten_C_Sharp.Controllers
         }
         private bool IsLeapYear(int year)
         {
-            if(year < 50)
+            if (year < 50)
             {
                 year = int.Parse(DateTime.Now.Year.ToString().Substring(0, 2)) * 100 + year;
             }
-            else if(year < 100)
+            else if (year < 100)
             {
                 year = int.Parse(DateTime.Now.Year.ToString().Substring(0, 2)) * 100 - 1 + year;
             }
