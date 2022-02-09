@@ -1,54 +1,27 @@
-﻿using System;
-using System.Globalization;
-
-namespace RskExtensions
+﻿namespace RskExtensions
 {
-	public static class IntExtensions
-	{
+    public static class IntExtensions
+    {
+        /// <summary>Determines whether this instance is automorph.</summary>
+        /// <param name="value">The value.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified value is automorph; otherwise, <c>false</c>.</returns>
         public static bool IsAutomorph(this int value)
         {
             int pow2 = (int)Math.Pow(value, 2);
-
-            if (pow2.ToString().EndsWith(value.ToString()))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return pow2.ToString().EndsWith(value.ToString());
         }
 
         public static bool IsDisarium(this int value)
         {
-			int sum = 0;
-			foreach(char item in value.ToString())
+            int sum = 0;
+            var digits = value.ToString();
+            for(int i = 0; i < digits.Length; i++)
             {
-				int number = int.Parse(item.ToString());
-				sum += (int)Math.Pow(number, 2);
-
+                int number = int.Parse(digits[i].ToString());
+                sum += (int)Math.Pow(number, i + 1);
             }
-			return value == sum;
+            return value == sum;
         }
-		public static string FizzBuzz(this int value)
-		{
-			if (value % 3 == 0 && value % 5 == 0)
-			{
-				return "FizzBuzz";
-			}
-
-			if (value % 3 == 0) // Deelbaar door 3
-			{
-				return "Fizz";
-			}
-
-			if (value % 5 == 0)
-			{
-				return "Buzz";
-			}
-
-
-			return value.ToString();
-		}
-	}
+    }
 }
