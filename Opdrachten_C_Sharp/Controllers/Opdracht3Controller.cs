@@ -111,6 +111,47 @@ namespace Opdrachten_C_Sharp.Controllers
             return View();
         }
 
+        public IActionResult Opdracht3_6()
+        {
+            /*
+             * Een school verstrekt aan de studenten twee keer per jaar een rapport. 
+             * Een student volgt de volgende 6 vakken: NED, ENG, WIS, PRG, DBD en ALG.
+             * Maak een programma dat voor een student een studentnummer vraagt,  
+             * de voor- en achternaam en voor alle vakken het eerste en het tweede cijfer 
+             * (beide cijfers met 1 decimaal). 
+             * Daarna moet voor de opgegeven student een rapport worden weergegeven, 
+             * waarbij per vak de behaalde cijfers en het (gewogen) gemiddelde worden 
+             * weergegeven (ook met 1 decimaal). 
+             * Voor de eerste 3 vakken tellen de toetsen even zwaar, 
+             * voor de overige vakken telt het tweede cijfer 2 keer mee en het 
+             * eerste cijfer 1 keer.
+             */
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Opdracht3_6(string studentnummer, string voornaam,
+            string achternaam , float[] cijfers1,
+            float[] cijfers2)
+        {
+            var eindcijfers = new float[6];
+            for(int i = 0; i < 3; i++)
+            {
+                eindcijfers[i] = (cijfers2[i] + cijfers1[i]) / 2;
+
+            }
+            for (int i = 3; i < 6; i++)
+            {
+                eindcijfers[i] = ((cijfers2[i] * 2) + cijfers1[i]) / 3;
+
+            }
+            ViewBag.Naam = voornaam + " " + achternaam;
+            ViewBag.Studentnummer = studentnummer;
+            ViewBag.Cijfers1 = cijfers1;
+            ViewBag.Cijfers2 = cijfers2;
+            ViewBag.Eindcijfers = eindcijfers;
+            return View("Rapport3_6");
+        }
         public IActionResult Opdracht3_11()
         {
             /*

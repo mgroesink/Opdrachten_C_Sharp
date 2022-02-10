@@ -5,22 +5,6 @@ using System.Text;
 
 namespace Opdrachten_C_Sharp.Controllers
 {
-    public enum Zodiacs
-    {
-        Ram,
-        Stier,
-        Tweeling,
-        Kreeft,
-        Leeuw,
-        Maagd,
-        Weegschaal,
-        Schorpioen,
-        Boogschutter,
-        Steenbok,
-        Waterman,
-        Vissen
-
-    }
     public class Opdracht6Controller : Controller
     {
         public IActionResult Index()
@@ -44,7 +28,7 @@ namespace Opdrachten_C_Sharp.Controllers
         {
             if (firstName != "" && birthDate != null)
             {
-                var zodiac = Enum.Parse(typeof(Zodiacs), Zodiac((DateTime)birthDate));
+                var zodiac = Enum.Parse(typeof(Zodiacs), StaticMethods.Zodiac((DateTime)birthDate));
                 ViewBag.Zodiac = zodiac.ToString().ToLower();
                 ViewBag.FirstName = firstName;
             }
@@ -110,105 +94,12 @@ namespace Opdrachten_C_Sharp.Controllers
             ViewData["daynumber"] = today.Day.ToString();
             ViewData["weeknumber"] = today.Weeknumber();
             ViewData["dayofyear"] = today.DayOfYear.ToString();
-            ViewData["weekend"] = IsWeekend(today);
-            ViewData["leapyear"] = IsLeapYear(today);
+            ViewData["weekend"] = StaticMethods.IsWeekend(today);
+            ViewData["leapyear"] = StaticMethods.IsLeapYear(today);
             return View();
         }
 
-        private string Zodiac(DateTime date)
-        {
-            Zodiacs zodiac;
-            if (date.Month == 3 && date.Day >= 21 ||
-                date.Month == 4 && date.Day <= 20)
-            {
-                zodiac = Zodiacs.Ram;
-            }
-            else if (date.Month == 4 && date.Day >= 21 ||
-                date.Month == 5 && date.Day <= 21)
-            {
-                zodiac = Zodiacs.Stier;
-            }
-            else if (date.Month == 5 && date.Day >= 22 ||
-                date.Month == 6 && date.Day <= 21)
-            {
-                zodiac = Zodiacs.Tweeling;
-            }
-            else if (date.Month == 6 && date.Day >= 22 ||
-                date.Month == 7 && date.Day <= 22)
-            {
-                zodiac = Zodiacs.Kreeft;
-            }
-            else if (date.Month == 7 && date.Day >= 23 ||
-                date.Month == 8 && date.Day <= 23)
-            {
-                zodiac = Zodiacs.Leeuw;
-            }
-            else if (date.Month == 8 && date.Day >= 24 ||
-                date.Month == 9 && date.Day <= 22)
-            {
-                zodiac = Zodiacs.Maagd;
-            }
-            else if (date.Month == 9 && date.Day >= 23 ||
-                date.Month == 10 && date.Day <= 22)
-            {
-                zodiac = Zodiacs.Weegschaal;
-            }
-            else if (date.Month == 10 && date.Day >= 23 ||
-                date.Month == 11 && date.Day <= 21)
-            {
-                zodiac = Zodiacs.Schorpioen;
-            }
-            else if (date.Month == 11 && date.Day >= 22 ||
-                date.Month == 6 && date.Day <= 22)
-            {
-                zodiac = Zodiacs.Boogschutter;
-            }
-            else if (date.Month == 12 && date.Day >= 23 ||
-                date.Month == 1 && date.Day <= 20)
-            {
-                zodiac = Zodiacs.Steenbok;
-            }
-            else if (date.Month == 1 && date.Day >= 21 ||
-                date.Month == 2 && date.Day <= 19)
-            {
-                zodiac = Zodiacs.Waterman;
-            }
-            else
-            {
-                zodiac = Zodiacs.Vissen;
-            }
-            return zodiac.ToString();
 
-        }
-
-        private bool IsLeapYear()
-        {
-            return DateTime.IsLeapYear(DateTime.Now.Year);
-        }
-        private bool IsLeapYear(int year)
-        {
-            if (year < 50)
-            {
-                year = int.Parse(DateTime.Now.Year.ToString().Substring(0, 2)) * 100 + year;
-            }
-            else if (year < 100)
-            {
-                year = int.Parse(DateTime.Now.Year.ToString().Substring(0, 2)) * 100 - 1 + year;
-            }
-
-            return DateTime.IsLeapYear(year);
-        }
-
-        private bool IsLeapYear(DateTime date)
-        {
-            return DateTime.IsLeapYear(date.Year);
-        }
-
-        private bool IsWeekend(DateTime date)
-        {
-            return date.DayOfWeek ==
-                DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday;
-        }
 
     }
 }

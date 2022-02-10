@@ -1,0 +1,182 @@
+﻿<style>
+    .onvoldoende {
+        background-color: indianred;
+        color: darkblue;
+    }
+    .voldoende {
+        background-color: lightgreen;
+        color: darkgreen;
+
+    }
+    .table {
+        width: 60%;
+    }
+</style>
+<h1>Rapport voor: @ViewBag.Naam (@ViewBag.Studentnummer)</h1>
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>Vak</th>
+        <th>Toets 1</th>
+        <th>Toets 2</th>
+        <th>Eind</th>
+    </tr>
+    <tr>
+        <td>
+            Nederlands
+        </td>
+        @{
+            string style = ViewBag.Cijfers1[0] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.Cijfers1[0].ToString("n1")
+        </td>
+        @{
+            style = ViewBag.Cijfers2[0] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.Cijfers2[0].ToString("n1")
+        </td>
+        @{
+             style = ViewBag.Eindcijfers[0] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.eindcijfers[0].ToString("n1")
+        </td>
+    </tr>
+    <tr>
+    <tr>
+        <td>
+            Engels
+        </td>
+        @{
+            style = ViewBag.Cijfers1[1] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.Cijfers1[1].ToString("n1")
+        </td>
+        @{
+            style = ViewBag.Cijfers2[1] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.Cijfers2[1].ToString("n1")
+        </td>
+        @{
+             style = ViewBag.Eindcijfers[1] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.eindcijfers[1].ToString("n1")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Wiskunde
+        </td>
+        @{
+            style = ViewBag.Cijfers1[2] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.Cijfers1[2].ToString("n1")
+        </td>
+        @{
+            style = ViewBag.Cijfers2[2] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.Cijfers2[2].ToString("n1")
+        </td>
+        @{
+             style = ViewBag.Eindcijfers[2] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.eindcijfers[2].ToString("n1")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Programmeren
+        </td>
+        @{
+            style = ViewBag.Cijfers1[3] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.Cijfers1[3].ToString("n1")
+        </td>
+        @{
+            style = ViewBag.Cijfers2[3] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.Cijfers2[3].ToString("n1")
+        </td>
+        @{
+             style = ViewBag.Eindcijfers[3] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.eindcijfers[3].ToString("n1")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Databases
+        </td>
+        @{
+            style = ViewBag.Cijfers1[4] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.Cijfers1[4].ToString("n1")
+        </td>
+        @{
+            style = ViewBag.Cijfers2[4] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.Cijfers2[4].ToString("n1")
+        </td>
+        @{
+             style = ViewBag.Eindcijfers[4] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.eindcijfers[4].ToString("n1")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Algoritmes
+        </td>
+        @{
+            style = ViewBag.Cijfers1[5] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.Cijfers1[5].ToString("n1")
+        </td>
+        @{
+            style = ViewBag.Cijfers2[5] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.Cijfers2[5].ToString("n1")
+        </td>
+        @{
+             style = ViewBag.Eindcijfers[5] < 5.5f ? "class=onvoldoende" : "class=voldoende";
+        }
+
+        <td @style>
+            @ViewBag.eindcijfers[5].ToString("n1")
+        </td>
+    </tr>
+</table>
