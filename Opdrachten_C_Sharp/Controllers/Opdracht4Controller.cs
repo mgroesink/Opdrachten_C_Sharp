@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using RskExtensions;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace Opdrachten_C_Sharp.Controllers
 {
@@ -58,6 +61,54 @@ namespace Opdrachten_C_Sharp.Controllers
                 ViewBag.getal2 = getal2;
                 ViewBag.getal3 = getal3;
             }
+            return View();
+        }
+
+        public IActionResult Opdracht4_8(string language)
+        {
+            List<SelectListItem> languages = new List<SelectListItem>();
+            languages.Add(new SelectListItem("Nederlands","NL"));
+            languages.Add(new SelectListItem("Duits","GE"));
+            languages.Add(new SelectListItem("Engels","GB"));
+            languages.Add(new SelectListItem("Frans", "FR"));
+            languages.Add(new SelectListItem("Spaans", "SP"));
+            languages.Add(new SelectListItem("Zweeds","SV"));
+            foreach(SelectListItem value in languages)
+            {
+                if(value.Value == language)
+                {
+                    value.Selected = true;
+                }
+            }
+            if(language != "")
+            {
+                var message = "";
+                switch(language)
+                {
+                    case "NL":
+                        message = "De huidige maand is " + DateTime.Now.ToString("MMMM", CultureInfo.GetCultureInfo("nk-NL"));
+                        break;
+                    case "GE":
+                        message = "Der aktuelle Monat ist " + DateTime.Now.ToString("MMMM", CultureInfo.GetCultureInfo("de-DE"));
+                        break;
+                    case "GB":
+                        message = "The current month is " + DateTime.Now.ToString("MMMM", CultureInfo.GetCultureInfo("en-EN"));
+                        break;
+                    case "FR":
+                        message = "Le mois en cours est " + DateTime.Now.ToString("MMMM", CultureInfo.GetCultureInfo("fr-FR"));
+                        break;
+                    case "SP":
+                        message = "El mes actual es " + DateTime.Now.ToString("MMMM", CultureInfo.GetCultureInfo("es-ES"));
+                        break;
+                    case "SV":
+                        message = "Den aktuella månaden är " + DateTime.Now.ToString("MMMM", CultureInfo.GetCultureInfo("sv-SE"));
+                        break;
+                }
+                ViewBag.Message = message;
+            }
+            ViewBag.Selected = language;
+            ViewBag.Languages = languages;
+
             return View();
         }
         public IActionResult Opdracht4_16()

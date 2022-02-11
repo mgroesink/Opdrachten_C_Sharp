@@ -1,0 +1,12 @@
+﻿<h1>@DateTime.Now.ToShortDateString()</h1>
+<hr />
+<form>
+    <select asp-items=@ViewBag.Languages name="language" onchange="this.form.submit();">
+        <option value="">-- Selecteer taal --</option>
+    </select>
+</form>
+<br />
+@if(ViewBag.Message != "")
+{
+    <h2>@ViewBag.Message</h2>
+}
