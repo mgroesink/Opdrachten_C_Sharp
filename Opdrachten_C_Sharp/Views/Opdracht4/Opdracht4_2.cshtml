@@ -1,0 +1,21 @@
+﻿<form>
+    <table class="table">
+        <tr>
+            <td>Geef het eerste getal</td>
+            <td><input type="number" name="getal1" value="@ViewBag.getal1"></td>
+        </tr>
+        <tr>
+            <td>Geef het tweede getal</td>
+            <td><input type="number" name="getal2" value="@ViewBag.getal2" /></td>
+        </tr>
+                <tr>
+            <td>Geef het tweede getal</td>
+            <td><input type="number" name="getal3" value="@ViewBag.getal3" /></td>
+        </tr>
+    </table>
+    <input type="submit" class=btn-dark value="Vergelijk" />
+</form>
+@if(ViewBag.Result != null)
+{
+    <h2>@ViewBag.Result</h2>
+}
