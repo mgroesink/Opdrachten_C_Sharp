@@ -175,7 +175,7 @@ namespace Opdrachten_C_Sharp.Controllers
             return View();
         }
 
-        public IActionResult Opdracht3_8(string voornaam , 
+        public IActionResult Opdracht3_8(string voornaam,
             string tussenvoegsels,
             string achternaam)
         {
@@ -193,6 +193,51 @@ namespace Opdrachten_C_Sharp.Controllers
                     (voornaam + tussenvoegsels + achternaam).
                     Replace(" ", "").Length.ToString();
                 ViewBag.Username = username.ToLower();
+            }
+            return View();
+        }
+
+        public IActionResult Opdracht3_9(string datum)
+        {
+            /*
+             * Laat de gebruiker een datum invoeren 
+             * (geef aan hoe je de datum wilt laten invoeren, 
+             * bijvoorbeeld YYYY-MM-DD of DD-MM-YYYY of MM-DD-YYYY) 
+             * en laat zien hoeveel dagen er in die maand zitten. 
+             * Houd daarbij rekening met schrikkeljaren en zorg dat in 
+             * je acceptatietest ook wordt getest op 29 februari.
+             */
+            if (datum != null)
+            {
+                try
+                {
+                    int daysInMonth = 0;
+                    DateTime date = DateTime.Parse(datum);
+                    switch (date.Month)
+                    {
+                        case 1:
+                        case 3:
+                        case 5:
+                        case 7:
+                        case 8:
+                        case 10:
+                        case 12:
+                            daysInMonth = 31;
+                            break;
+                        case 2:
+                            daysInMonth = date.IsLeapYear() ? 29 : 28;
+                            break;
+                        default:
+                            daysInMonth = 30;
+                            break;
+                    }
+                    ViewBag.Days = daysInMonth;
+                    ViewBag.Month = date.ToString("MMMM");
+                }
+                catch
+                {
+                    ViewBag.Error = "Ongeldige datum";
+                }
             }
             return View();
         }
