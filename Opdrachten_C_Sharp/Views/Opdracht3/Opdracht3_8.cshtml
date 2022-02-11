@@ -1,0 +1,36 @@
+﻿<form>
+    <table class="table table-active">
+        <tr>
+            <td>
+                Roepnaam
+            </td>
+            <td colspan="2">
+                <input type="text" name="voornaam" />
+            </td>
+        </tr>
+                <tr>
+            <td>
+                Tussenvoegsels
+            </td>
+            <td colspan="2">
+                <input type="text" name="tussenvoegsels" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Achternaam
+            </td>
+            <td colspan="2">
+                <input type="text" name="achternaam" />
+            </td>
+        </tr>
+
+
+    </table>
+    <input class="btn btn-info" type="submit" value="Maak account" />
+</form>
+@if(ViewBag.Username.Length > 0)
+{
+    <h2>De gebruikersnaam is @ViewBag.Username</h2>
+}
+

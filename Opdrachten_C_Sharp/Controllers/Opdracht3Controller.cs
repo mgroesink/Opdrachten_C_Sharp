@@ -52,7 +52,7 @@ namespace Opdrachten_C_Sharp.Controllers
             return View();
         }
 
-        public IActionResult Opdracht3_3(int width , int height , int length)
+        public IActionResult Opdracht3_3(int width, int height, int length)
         {
             /*
              * Maak een programma dat de inhoud van een kubus berekent. 
@@ -75,7 +75,7 @@ namespace Opdrachten_C_Sharp.Controllers
              * Gebruik de koersen die gelden op de dag dat de opdracht wordt gemaakt.
              */
 
-            var currencies = new Dictionary<string , double>();
+            var currencies = new Dictionary<string, double>();
             currencies["Amerikaanse dollar"] = euro * 1.13;
             currencies["Zweedse kroon"] = euro * 10.44;
             currencies["Zuid-Afrikaanse rand"] = euro * 17.16;
@@ -86,7 +86,7 @@ namespace Opdrachten_C_Sharp.Controllers
             return View();
         }
 
-        public IActionResult Opdracht3_5(double length , double width)
+        public IActionResult Opdracht3_5(double length, double width)
         {
             /*
              * Maak een programma dat berekent hoeveel het stallen van een camper kost.
@@ -100,7 +100,7 @@ namespace Opdrachten_C_Sharp.Controllers
              * voor 1 jaar stalling, voor 2 jaar stalling en voor 3 jaar stalling.
              */
             var squarem2 = length * width;
-            if(squarem2 > 0)
+            if (squarem2 > 0)
             {
                 ViewBag.Width = width;
                 ViewBag.Length = length;
@@ -131,11 +131,11 @@ namespace Opdrachten_C_Sharp.Controllers
 
         [HttpPost]
         public IActionResult Opdracht3_6(string studentnummer, string voornaam,
-            string achternaam , float[] cijfers1,
+            string achternaam, float[] cijfers1,
             float[] cijfers2)
         {
             var eindcijfers = new float[6];
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 eindcijfers[i] = (cijfers2[i] + cijfers1[i]) / 2;
 
@@ -151,6 +151,34 @@ namespace Opdrachten_C_Sharp.Controllers
             ViewBag.Cijfers2 = cijfers2;
             ViewBag.Eindcijfers = eindcijfers;
             return View("Rapport3_6");
+        }
+
+        public IActionResult Opdracht3_7(string text = "")
+        {
+            ViewBag.Original = text;
+            ViewBag.Text = text.Replace("a", "*").
+                Replace("A", "*").
+                Replace("e", "*").
+                Replace("E", "*").
+                Replace("i", "*").
+                Replace("I", "*").
+                Replace("o", "*").
+                Replace("O", "*").
+                Replace("u", "*").
+                Replace("U", "*");
+            return View();
+        }
+
+        public IActionResult Opdracht3_8(string voornaam, string tussenvoegsels,
+            string achternaam)
+        {
+            string username = voornaam.Substring(0, 1) + achternaam +
+                (voornaam + tussenvoegsels + achternaam).Replace(" ", "").Length.ToString();
+            if (!string.IsNullOrEmpty(username))
+            {
+                ViewBag.Username = username.ToLower();
+            }
+            return View();
         }
         public IActionResult Opdracht3_11()
         {

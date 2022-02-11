@@ -1,0 +1,10 @@
+﻿<form method="get">
+    Voer uw tekst in 
+    <input type="text" name="text" value="@ViewBag.Original"/>
+
+    <input class="btn btn-info" type="submit" value="Go"/>
+</form>
+@if(ViewBag.Text.ToString().Length > 0)
+{
+    <h2>@ViewBag.Text</h2>
+}
