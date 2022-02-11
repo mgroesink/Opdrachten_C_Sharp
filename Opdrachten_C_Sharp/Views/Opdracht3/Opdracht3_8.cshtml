@@ -29,7 +29,7 @@
     </table>
     <input class="btn btn-info" type="submit" value="Maak account" />
 </form>
-@if(ViewBag.Username.Length > 0)
+@if(ViewBag.Username != null)
 {
     <h2>De gebruikersnaam is @ViewBag.Username</h2>
 }
