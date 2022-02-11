@@ -155,6 +155,12 @@ namespace Opdrachten_C_Sharp.Controllers
 
         public IActionResult Opdracht3_7(string text = "")
         {
+            /*
+             * Maak een programma dat de gebruiker een tekst laat invoeren. 
+             * Als uitvoer wordt dezelfde tekst getoond, 
+             * maar op de plaats van een klinker moet een sterretje 
+             * worden weergegeven.
+             */
             ViewBag.Original = text;
             ViewBag.Text = text.Replace("a", "*").
                 Replace("A", "*").
@@ -169,13 +175,23 @@ namespace Opdrachten_C_Sharp.Controllers
             return View();
         }
 
-        public IActionResult Opdracht3_8(string voornaam, string tussenvoegsels,
+        public IActionResult Opdracht3_8(string voornaam , 
+            string tussenvoegsels,
             string achternaam)
         {
-            string username = voornaam.Substring(0, 1) + achternaam +
-                (voornaam + tussenvoegsels + achternaam).Replace(" ", "").Length.ToString();
-            if (!string.IsNullOrEmpty(username))
+            /*
+             * Maak een programma dat voor een gebruiker een username genereert.
+             * Als invoer geeft de gebruiker zijn voornaam, tussenvoegsels en 
+             * achternaam. De username wordt als volgt samengesteld:
+             * de eerste letter van de voornaam gevolgd door de 
+             * volledige achternaam en dat weer gevolgd door een getal 
+             * dat de lengte is van de totale naam (zonder spaties). 
+             */
+            if (!string.IsNullOrEmpty(voornaam))
             {
+                string username = voornaam.Substring(0, 1) + achternaam +
+                    (voornaam + tussenvoegsels + achternaam).
+                    Replace(" ", "").Length.ToString();
                 ViewBag.Username = username.ToLower();
             }
             return View();
