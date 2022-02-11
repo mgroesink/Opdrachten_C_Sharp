@@ -1,0 +1,14 @@
+﻿<form>
+    <input type="hidden" name="start" value="@ViewBag.Starttime"/>
+
+    Voer je naam in 
+    <input type="text" name="naam" class="form-control"/>
+    <br/>
+    Voer je leeftijd in
+    <input type="number" name="leeftijd" class="form-control" />
+    <input type="submit" name="submit" value="Submit"/>
+</form>
+@if(@ViewBag.Time != null)
+{
+    <h2>Het duurde @ViewBag.Time seconden om je gegevens in te voeren.</h2>
+}

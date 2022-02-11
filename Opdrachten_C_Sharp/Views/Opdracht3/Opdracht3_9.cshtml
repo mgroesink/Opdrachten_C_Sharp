@@ -1,6 +1,8 @@
 ﻿<form>
     Voer een datum in 
-    <input type="text" name="datum" placeholder="yyyy-mm-dd"/>
+    <input type="text" name="datum" placeholder="yyyy-mm-dd" value="@ViewBag.Date"/>
+        <input type="submit" value="Gaan"/>
+
 </form>
 @if(ViewBag.Error != null)
 {
@@ -8,5 +10,5 @@
 }
 @if(ViewBag.Days != null)
 {
-    <h2>In de maand @ViewBag.Month zitten@ViewBag.Days dagen</h2>
+    <h2>In de maand @ViewBag.Month zitten @ViewBag.Days dagen</h2>
 }

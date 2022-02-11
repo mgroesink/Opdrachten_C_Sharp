@@ -233,6 +233,7 @@ namespace Opdrachten_C_Sharp.Controllers
                     }
                     ViewBag.Days = daysInMonth;
                     ViewBag.Month = date.ToString("MMMM");
+                    ViewBag.Date = date.ToShortDateString();
                 }
                 catch
                 {
@@ -240,6 +241,24 @@ namespace Opdrachten_C_Sharp.Controllers
                 }
             }
             return View();
+        }
+
+        public IActionResult Opdracht3_10(string submit , DateTime start)
+        {
+            /*
+             * Vraag de gebruiker zijn naam in te voeren en daarna zijn leeftijd. 
+             * Toon vervolgens als uitvoer hoeveel seconden hij erover heeft gedaan.
+             */
+            if (submit == null)
+            {
+                ViewBag.Starttime = DateTime.Now;
+            }
+            else
+            {
+                ViewBag.Time = start.Subtract(DateTime.Now).Seconds;
+            }
+            return View();
+
         }
         public IActionResult Opdracht3_11()
         {
