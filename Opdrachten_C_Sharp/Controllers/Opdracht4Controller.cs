@@ -121,6 +121,32 @@ namespace Opdrachten_C_Sharp.Controllers
             return View();
         }
 
+        public IActionResult Opdracht4_5(string choise = "")
+        {
+            /*
+            In het Amerikaanse onderwijssysteem wordt gewerkt met letters 
+            als A, B, C, D en F. 
+            Daarbij geldt dat een C of hoger een voldoende is en het vak 
+            is daarmee afgerond.
+            Lees de score van een student in (als aantal behaalde punten) 
+            en geef aan welk letter-resultaat de student heeft gehaald. 
+            Geef ook aan of het vak is behaald of niet.
+            */
+            if(choise == "")
+            {
+                return View();
+            }
+            if(choise.ToLower() == "a" || choise.ToLower() =="b")
+            {
+                ViewBag.Result = $"De score {choise} is onvoldoende en het vak is niet gehaald";
+            }
+            else
+            {
+                ViewBag.Result = $"De score {choise} is voldoende en het vak is gehaald";
+            }
+            return View();
+        }
+
         public IActionResult Opdracht4_6(int hours, int age, int failures)
         {
             /*
@@ -144,6 +170,7 @@ namespace Opdrachten_C_Sharp.Controllers
             ViewData["failures"] = failures;
             return View();
         }
+
         public IActionResult Opdracht4_7()
         {
             /*

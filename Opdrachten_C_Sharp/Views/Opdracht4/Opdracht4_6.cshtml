@@ -2,15 +2,15 @@
     <table class="table table-active">
         <tr>
             <td>Werkuren</td>
-            <td><input id="hours" name="hours" required value=@ViewData["hours"]/></td>
+            <td><input id="hours" name="hours" required value=@ViewData["hours"] /></td>
         </tr>
         <tr>
             <td>Leeftijd in jaren</td>
-            <td><input type="number" min="1" max="10" name="age" required value=@ViewData["age"]/></td>
+            <td><input type="number" min="1" max="10" name="age" required value=@ViewData["age"] /></td>
         </tr>
                 <tr>
             <td>Storingen per jaar</td>
-            <td><input type="number" min="1" max="100" name="failures" required value=@ViewData["hours"] /></td>
+            <td><input type="number" min="1" max="100" name="failures" required value=@ViewData["failures"] /></td>
         </tr>
     </table>
     <input style="margin:50px 0;" class="btn-lg btn-info" type="submit" value="Status" />
