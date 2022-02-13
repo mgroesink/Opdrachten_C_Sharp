@@ -4,6 +4,7 @@ using RskExtensions;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text;
 
 namespace Opdrachten_C_Sharp.Controllers
 {
@@ -36,7 +37,7 @@ namespace Opdrachten_C_Sharp.Controllers
             return View();
         }
 
-        public IActionResult Opdracht4_2(double? getal1 = null, 
+        public IActionResult Opdracht4_2(double? getal1 = null,
             double? getal2 = null, double? getal3 = null)
         {
             /*
@@ -64,26 +65,151 @@ namespace Opdrachten_C_Sharp.Controllers
             return View();
         }
 
+        public IActionResult Opdracht4_3(int? color)
+        {
+            /*
+            Lees een getal in: 1, 2, 3 of 4. 
+            Als geen geldig getal wordt ingevoerd moet als melding verschijnen: 
+            Geen geldige waarde. Alleen 1, 2, 3 of 4 is toegestaan.
+            Als wel een geldig getal is ingevoerd moet als melding verschijnen:
+            • Bij 1: Klaveren
+            • Bij 2: Ruiten
+            • Bij 3: Harten
+            • Bij 4: Schoppen
+            */
+            switch (color)
+            {
+                case null:
+                    break;
+                case 1:
+                    ViewBag.Result = "Klaveren";
+                    break;
+                case 2:
+                    ViewBag.Result = "Ruiten";
+                    break;
+                case 3:
+                    ViewBag.Result = "Harten";
+                    break;
+                case 4:
+                    ViewBag.Result = "Schoppen";
+                    break;
+                default:
+                    ViewBag.Result = "Geen geldige waarde. Alleen 1, 2, 3 of 4 is toegestaan";
+                    break;
+            }
+            ViewBag.color = color;
+            return View();
+        }
+
+        public IActionResult Opdracht4_4(int? number1 , int? number2)
+        {
+            /*
+            Lees 2 getallen in. 
+            Bepaal en toon of het tweede getal een veelvoud is van het eerste getal. 
+            24 is een veelvoud van 3, want als je 24 deelt door 3 houd je niets over. 
+            Maar 26 is geen veelvoud van 5, want als je 26 deelt door 5 
+            houd je een restant van 1 over.
+            */
+            if(number1!= null && number2 != null)
+            {
+                ViewBag.Result = number1 % number2 == 0 ?
+                    $"{number1} is een veelvoud van {number2}" :
+                    $"{number1} is geen veelvoud van {number2}";
+                ViewBag.Number1 = number1;
+                ViewBag.Number2 = number2;
+            }
+            return View();
+        }
+
+        public IActionResult Opdracht4_6(int hours, int age, int failures)
+        {
+            /*
+            Een metaaldraaibank wordt aan het eind van het jaar vervangen door een nieuwe als aan één of meer van de volgende voorwaarden is voldaan:
+                • Aantal werkuren is meer dan 10.000
+                • Het apparaat is 7 jaar oud of meer
+                • Het aantal storingen per jaar is meer dan 25
+            Lees de benodigde gegevens in en toon vervolgens of de draaibank vervangen moet worden of niet.
+
+             */
+            if (hours > 10000 || age >= 7 || failures > 25)
+            {
+                ViewBag.Message = "Machine moet worden vervangen";
+            }
+            else if (hours > 0)
+            {
+                ViewBag.Message = "Machine hoeft nog niet te worden vervangen";
+            }
+            ViewData["hours"] = hours;
+            ViewData["age"] = age;
+            ViewData["failures"] = failures;
+            return View();
+        }
+        public IActionResult Opdracht4_7()
+        {
+            /*
+            Maak een programma dat de gebruiker begroet op basis van het tijdstip van de dag en het soort dag.Hieronder zie je enkele voorbeelden:
+
+            Als het tussen 00:00 en 12.00 uur is op een doordeweekse dag 
+            dient de uitvoer te zijn:
+            Goedemorgen het is vandaag een werkdag
+            Als het tussen 12:00 en 18.00 uur is op een zaterdag of zondag 
+            dient de uitvoer te zijn:
+                Goedemiddag het is vandaag weekend
+            Als het tussen 18:00 en 24.00 uur is op een doordeweekse dag 
+            dient de uitvoer te zijn:
+                Goedenavond het is vandaag een werkdag
+            */
+            StringBuilder message = new StringBuilder();
+            DateTime now = DateTime.Now;
+            if (now.Hour < 12)
+            {
+                message.Append("Goedemorgen");
+            }
+            else if (now.Hour < 18)
+            {
+                message.Append("Goedemiddag");
+            }
+            else
+            {
+                message.Append("Goedenavond");
+            }
+            message.Append(" het is vandaag ");
+            if (now.DayOfWeek == DayOfWeek.Sunday ||
+                now.DayOfWeek == DayOfWeek.Saturday)
+            {
+                message.Append(" weekend.");
+
+            }
+            else
+            {
+                message.Append(" een werkdag.");
+
+            }
+            ViewBag.Message = message.ToString();
+            return View();
+
+        }
+
         public IActionResult Opdracht4_8(string language)
         {
             List<SelectListItem> languages = new List<SelectListItem>();
-            languages.Add(new SelectListItem("Nederlands","NL"));
-            languages.Add(new SelectListItem("Duits","GE"));
-            languages.Add(new SelectListItem("Engels","GB"));
+            languages.Add(new SelectListItem("Nederlands", "NL"));
+            languages.Add(new SelectListItem("Duits", "GE"));
+            languages.Add(new SelectListItem("Engels", "GB"));
             languages.Add(new SelectListItem("Frans", "FR"));
             languages.Add(new SelectListItem("Spaans", "SP"));
-            languages.Add(new SelectListItem("Zweeds","SV"));
-            foreach(SelectListItem value in languages)
+            languages.Add(new SelectListItem("Zweeds", "SV"));
+            foreach (SelectListItem value in languages)
             {
-                if(value.Value == language)
+                if (value.Value == language)
                 {
                     value.Selected = true;
                 }
             }
-            if(language != "")
+            if (language != "")
             {
                 var message = "";
-                switch(language)
+                switch (language)
                 {
                     case "NL":
                         message = "De huidige maand is " + DateTime.Now.ToString("MMMM", CultureInfo.GetCultureInfo("nk-NL"));
@@ -111,6 +237,7 @@ namespace Opdrachten_C_Sharp.Controllers
 
             return View();
         }
+
         public IActionResult Opdracht4_16()
         {
             /*
