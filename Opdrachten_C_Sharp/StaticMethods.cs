@@ -147,5 +147,41 @@ namespace Opdrachten_C_Sharp
             }
             return decryptedText.ToString();
         }
+
+        public static string Encrypt(string text, string key)
+        {
+            StringBuilder encryptedText = new StringBuilder();  
+            for(int i = 0; i < text.Length; i++)
+            {
+                int ascii1 = (int)text[i];
+                int ascii2 = (int)key[i];
+                int sum = (ascii1 + ascii2) % 256;
+                string outputHex = sum.ToString("X");
+                if(outputHex.Length == 1)
+                {
+                    outputHex = "0" + outputHex;
+                }
+                encryptedText.Append(outputHex);
+            }
+
+
+            return encryptedText.ToString();
+        }
+
+        public static string Decrypt(string text, string key)
+        {
+            StringBuilder decryptedText = new StringBuilder();
+            for (int i = 0; i < text.Length; i+=2)
+            {
+                int ascii1 = Convert.ToInt32(text.Substring(i,2), 16);
+                int ascii2 = (int)key[i/2];
+                int sum = (ascii1 - ascii2 + 256) % 256;
+
+                decryptedText.Append(((char)sum).ToString());
+            }
+
+
+            return decryptedText.ToString();
+        }
     }
 }

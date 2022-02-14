@@ -1,0 +1,15 @@
+﻿<form method="post">
+    <table class="table">
+        <tr>
+            <td>Geef de te versleutelen tekst</td>
+            <td><input type="text" name="text" placeholder="Tekst" /></td>
+        </tr>
+    </table>
+    <input type="submit" value="Versleutel"/>
+</form>
+@if(ViewBag.Encrypted != null)
+{
+    <h4>De oorspronkelijke tekst is: @ViewBag.Text</h4>
+    <h4>De gegenereerde key is: @ViewBag.Key</h4>
+    <h4>De versleutelde tekst is: @ViewBag.Encrypted</h4>
+}
