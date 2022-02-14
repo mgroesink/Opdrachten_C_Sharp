@@ -31,7 +31,7 @@ namespace Opdrachten_C_Sharp.Tests
         {
             Assert.AreEqual(5, StaticMethods.AddNumbers(2, 3));
         }
-        
+
         [TestMethod()]
         public void SteenbokTest()
         {
@@ -100,6 +100,20 @@ namespace Opdrachten_C_Sharp.Tests
             Assert.IsTrue(StaticMethods.IsWeekend(date3));
             Assert.IsTrue(StaticMethods.IsWeekend(date4));
             Assert.IsFalse(StaticMethods.IsWeekend(date5));
+        }
+
+        [TestMethod()]
+        public void EncryptTest()
+        {
+            Assert.AreEqual("KDOOR", StaticMethods.Encrypt("HALLO", 3));
+            Assert.AreEqual("PDCCHO", StaticMethods.Encrypt("MAZZEL", 3));
+        }
+
+        [TestMethod()]
+        public void DecryptTest()
+        {
+            Assert.AreEqual("HALLO", StaticMethods.Decrypt("KDOOR", 3));
+            Assert.AreEqual("MAZZEL", StaticMethods.Decrypt("PDCCHO", 3));
         }
     }
 }

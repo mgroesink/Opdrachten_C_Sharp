@@ -1,0 +1,19 @@
+﻿<form method="post">
+    <table class="table">
+        <tr>
+            <td>Geef het originele wachtwoord</td>
+            <td><input type="password" name="password" placeholder="Password" /></td>
+        </tr>
+        <tr>
+            <td>Geef de key</td>
+            <td><input type="number" min="1" name="key" placeholder="Key" /></td>
+        </tr>
+    </table>
+    <input type="submit" value="Versleutel"/>
+</form>
+@if(ViewBag.Encrypted != null)
+{
+    <p>Het wachtwoord is: @ViewBag.Password</p>
+    <p>Het versleutelde wachtwoord is: @ViewBag.Encrypted</p>
+    <p>Het originale wachtwoord is: @ViewBag.Decrypted</p>
+}

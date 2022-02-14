@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Opdrachten_C_Sharp
 {
@@ -117,6 +118,34 @@ namespace Opdrachten_C_Sharp
         {
             return date.DayOfWeek ==
                 DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday;
+        }
+
+        public static string Encrypt(string text , int key)
+        {
+            text = text.ToUpper();
+            string alphabet = "abcdefghijklmnopqrstuvwxyz".ToUpper();
+            StringBuilder encryptedText = new StringBuilder();
+            foreach(var letter in text)
+            {
+                int position = alphabet.IndexOf(letter);
+                int newPosition = (position + key) % 26;
+                encryptedText.Append(alphabet[newPosition].ToString());
+            }
+            return encryptedText.ToString();
+        }
+
+        public static string Decrypt(string text, int key)
+        {
+            text = text.ToUpper();
+            string alphabet = "abcdefghijklmnopqrstuvwxyz".ToUpper();
+            StringBuilder decryptedText = new StringBuilder();
+            foreach (var letter in text)
+            {
+                int position = alphabet.IndexOf(letter);
+                int newPosition = (position - key + 26) % 26;
+                decryptedText.Append(alphabet[newPosition].ToString());
+            }
+            return decryptedText.ToString();
         }
     }
 }

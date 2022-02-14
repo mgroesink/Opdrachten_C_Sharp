@@ -1,7 +1,7 @@
 ﻿<h1>@DateTime.Now.ToShortDateString()</h1>
 <hr />
 <form>
-    <select asp-items=@ViewBag.Languages name="language" onchange="this.form.submit();">
+    <select asp-items=@ViewBag.Languages name="language" onchange="showSelected();">
         <option value="">-- Selecteer taal --</option>
     </select>
 </form>
@@ -10,3 +10,10 @@
 {
     <h2>@ViewBag.Message</h2>
 }
+
+<script>
+function showSelected(){
+	var car = document.getElementById("cars");
+    alert(car.value);
+}
+</script>

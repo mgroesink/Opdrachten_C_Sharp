@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RskExtensions;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -239,7 +240,7 @@ namespace Opdrachten_C_Sharp.Controllers
                 switch (language)
                 {
                     case "NL":
-                        message = "De huidige maand is " + DateTime.Now.ToString("MMMM", CultureInfo.GetCultureInfo("nk-NL"));
+                        message = "De huidige maand is " + DateTime.Now.ToString("MMMM", CultureInfo.GetCultureInfo("nl-NL"));
                         break;
                     case "GE":
                         message = "Der aktuelle Monat ist " + DateTime.Now.ToString("MMMM", CultureInfo.GetCultureInfo("de-DE"));
