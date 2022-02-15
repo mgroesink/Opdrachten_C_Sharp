@@ -1,0 +1,18 @@
+﻿<form method="post">
+    <table>
+        <tr>
+            <td>Geef het wachtwoord</td>
+            <td><input type="password" name="password"/></td>
+        </tr>
+                <tr>
+            <td>Geef de key</td>
+            <td><input type="number" name="key" min="1" max="25"/></td>
+        </tr>
+    </table>
+    <input type="submit" class=btn-primary value="Encrypt"/>
+</form>
+@if(ViewBag.Encrypted != null)
+{
+    <h2>De versleutelde tekst is @ViewBag.Encrypted</h2>
+}
+
