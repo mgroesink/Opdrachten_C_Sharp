@@ -1,19 +1,19 @@
 ﻿<form method="post">
-    <table class="table">
+    <table>
         <tr>
-            <td>Geef het originele wachtwoord</td>
-            <td><input type="password" name="password" placeholder="Password" /></td>
+            <td>Geef het wachtwoord</td>
+            <td><input type="password" name="password"/></td>
         </tr>
-        <tr>
+                <tr>
             <td>Geef de key</td>
-            <td><input type="number" min="1" name="key" placeholder="Key" /></td>
+            <td><input type="number" name="key" min="1" max="25"/></td>
         </tr>
     </table>
-    <input type="submit" value="Versleutel"/>
+    <input type="submit" class=btn-primary value="Encrypt"/>
 </form>
 @if(ViewBag.Encrypted != null)
 {
-    <p>Het wachtwoord is: @ViewBag.Password</p>
-    <p>Het versleutelde wachtwoord is: @ViewBag.Encrypted</p>
-    <p>Het originale wachtwoord is: @ViewBag.Decrypted</p>
+    <h2>Het oorspronkelijke wachtwoord was @ViewBag.Password</h2>
+    <h2>De versleutelde tekst is @ViewBag.Encrypted</h2>
 }
+
