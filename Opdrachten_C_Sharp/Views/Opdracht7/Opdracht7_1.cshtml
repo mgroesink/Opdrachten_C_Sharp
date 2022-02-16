@@ -1,0 +1,52 @@
+﻿@model int[]
+<form>
+    <table class="table">
+        <tr>
+            <td>Eerste getal</td>
+            <td><input name="numbers" type="number" /></td>
+        </tr>
+        <tr>
+            <td>Tweede getal</td>
+            <td><input name="numbers" type="number" /></td>
+        </tr>
+        <tr>
+            <td>Derde getal</td>
+            <td><input name="numbers" type="number" /></td>
+        </tr>
+        <tr>
+            <td>Vierde getal</td>
+            <td><input name="numbers" type="number" /></td>
+        </tr>
+        <tr>
+            <td>Vijfde getal</td>
+            <td><input name="numbers" type="number" /></td>
+        </tr>
+    </table>
+    <input type="submit" name="subit" value="Bereken" />
+</form>
+@if (Model != null)
+{
+
+    @for (int i = 0; i < Model.Length; i++)
+    {
+        @switch (i)
+        {
+            case 0:
+                <span>Het eerste getal is @Model[i]</span>
+                break;
+            case 1:
+                <span>Het tweede getal is @Model[i]</span>
+                break;
+            case 2:
+                <span>Het derde getal is @Model[i]</span>
+                break;
+            case 3:
+                <span>Het vierde getal is @Model[i]</span>
+                break;
+            case 4:
+                <span>Het vijfde getal is @Model[i]</span>
+                break;
+        }
+        <br/>
+    }
+}

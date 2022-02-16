@@ -12,6 +12,48 @@ namespace Opdrachten_C_Sharp.Controllers
             return View();
         }
 
+        public IActionResult Opdracht7_1(int[] numbers)
+        {
+            if(numbers != null)
+            {
+                return View(numbers);
+            }
+            return View();
+        }
+
+        public IActionResult Opdracht7_2()
+        {
+            Random r = new Random();
+
+            string[] names = new string[]
+            {
+                "Youri",
+                "Dennis",
+                "Thom",
+                "Sten",
+                "Bram",
+                "Mike",
+                "Calvin",
+                "Thijs",
+                "Chris"
+            };
+
+            int randomNumber = r.Next(names.Length);
+            ViewBag.Name = names[randomNumber];
+            return View();
+
+        }
+
+        public IActionResult Opdracht7_3()
+        {
+            Random r = new Random();
+            int[] array1d = new int[25];
+            for (int i = 0; i < array1d.Length; i++)
+            {
+                array1d[i] = r.Next(1, 10000);
+            }
+            return View(array1d);
+        }
         public IActionResult Opdracht7_12()
         {
             /*
