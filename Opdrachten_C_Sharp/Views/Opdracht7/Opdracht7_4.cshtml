@@ -1,0 +1,40 @@
+﻿<style>
+    .box {
+        border: solid 4px black;
+        padding: 10px;
+        margin-top: 25px;
+        text-align: center;
+        font-weight: bolder;
+        font-size: inherit.25em;
+    }
+</style>
+@if (ViewBag.Error != null)
+{
+    <div class="alert-danger">@ViewBag.Error</div>
+}
+<form>
+    Hoe lang moet het wachtwoord worden?
+    <input type="number" min="1" max="60" name="length" required value="@ViewBag.Length"/>
+    <input type="submit" name="submit" class="btn-dark" value="Genereer wachtwoord" />
+</form>
+<br />
+@if (ViewBag.Password != null)
+{
+    <h4>Het wachtwoord is:</h4>
+    <div id="pwbox" class="box">@ViewBag.Password</div>
+}
+
+@section scripts {
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        if(document.getElementById("pwbox").innerHTML != "") {
+        var copyText = "@ViewBag.Password";
+        navigator.clipboard.writeText(copyText)
+        .then(() => { alert('Copied to clipboard.') })
+        }
+    });
+
+</script>
+
+}

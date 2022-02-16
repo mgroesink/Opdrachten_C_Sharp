@@ -8,6 +8,8 @@ namespace Opdrachten_C_Sharp
         private const string CAPITALS = "ABCDEFGHIJKLMNOPQRSTUVW";
         private const string NONCAPITALS = "abcdefghijklmnopqrstuvwxyz";
         private const string DIGITS = "0123456789";
+        private static Random r = new Random();
+
         /// <summary>
         /// Luizenmoeder.
         /// </summary>
@@ -268,7 +270,6 @@ namespace Opdrachten_C_Sharp
         public static string GetCode(int length, string unwanted, bool onlycaptitals = true)
         {
             StringBuilder sb = new StringBuilder();
-            Random r = new Random();
             string chars = onlycaptitals ? CAPITALS + DIGITS :
                 CAPITALS + NONCAPITALS + DIGITS;
             if (onlycaptitals)
@@ -285,6 +286,64 @@ namespace Opdrachten_C_Sharp
                 sb.Append(chars[r.Next(chars.Length)]);
             }
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Creates a random password.
+        /// </summary>
+        /// <param name="length">The length.</param>
+        /// <returns></returns>
+        public static string CreatePassword(int length)
+        {
+            StringBuilder sb = new StringBuilder();
+            while (sb.Length < length)
+            {
+                var randomOption = r.Next(4);
+                switch (randomOption)
+                {
+                    case 0:
+                        sb.Append(GetRandomLetter('U'));
+                        break;
+                    case 1:
+                        sb.Append(GetRandomLetter('L'));
+                        break;
+                    case 2:
+                        sb.Append(r.Next(10));
+                        break;
+                    case 3:
+                        sb.Append(GetSpecialCharacter());
+                        break;
+                }
+            }
+
+            // Replace a random character with a random special 
+            // character to be sure that the password has
+            // at least one special character
+            sb[r.Next(sb.Length)] = GetSpecialCharacter();
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Gets a random letter.
+        /// </summary>
+        /// <param name="upperlower">The upperlower.</param>
+        /// <returns></returns>
+        private static char GetRandomLetter(char upperlower)
+        {
+            if (upperlower == 'U')
+                return CAPITALS[r.Next(CAPITALS.Length)];
+            else
+                return NONCAPITALS[r.Next(NONCAPITALS.Length)];
+        }
+
+        /// <summary>
+        /// Gets a special character.
+        /// </summary>
+        /// <returns></returns>
+        private static char GetSpecialCharacter()
+        {
+            string chars = "!@#$%&*";
+            return chars[r.Next(chars.Length)];
         }
     }
 }

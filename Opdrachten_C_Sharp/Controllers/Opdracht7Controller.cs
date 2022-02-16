@@ -7,20 +7,22 @@ namespace Opdrachten_C_Sharp.Controllers
 {
     public class Opdracht7Controller : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         public IActionResult Opdracht7_1(int[] numbers)
         {
-            if(numbers != null)
+            /*
+            Vraag de gebruiker 5 getallen in te voeren en sla de 
+            getallen op in een array. 
+            Geef daarna de ingevoerde getallen als volgt weer:
+                Het eerste getal is: …
+                Het tweede getal is: …
+
+             */
+            if (numbers != null)
             {
                 return View(numbers);
             }
             return View();
         }
-
         public IActionResult Opdracht7_2()
         {
             Random r = new Random();
@@ -35,7 +37,22 @@ namespace Opdrachten_C_Sharp.Controllers
                 "Mike",
                 "Calvin",
                 "Thijs",
-                "Chris"
+                "Chris",
+                "Kayra",
+                "Johan",
+                "Stein",
+                "Rayan",
+                "Michiel",
+                "Damiën",
+                "Damian",
+                "Mitchel",
+                "Dario",
+                "Vincent",
+                "Guus",
+                "Malik",
+                "Walid",
+                "Clint",
+                "Sydney"
             };
 
             int randomNumber = r.Next(names.Length);
@@ -43,9 +60,14 @@ namespace Opdrachten_C_Sharp.Controllers
             return View();
 
         }
-
         public IActionResult Opdracht7_3()
         {
+            /*
+             * Maak een programma dat 25 random gehele getallen tussen 1 en 10000 
+             * in een array plaatst. 
+             * Vervolgens moeten eerst alle even getallen uit de array 
+             * worden weergegeven en daarna alle oneven getallen.
+             */
             Random r = new Random();
             int[] array1d = new int[25];
             for (int i = 0; i < array1d.Length; i++)
@@ -53,6 +75,27 @@ namespace Opdrachten_C_Sharp.Controllers
                 array1d[i] = r.Next(1, 10000);
             }
             return View(array1d);
+        }
+        public IActionResult Opdracht7_4(string submit, int length = 10)
+        {
+            /*
+            De gebruiker moet kunnen aangeven hoelang het password moet zijn. 
+            Waarna er een random password moet worden gegenereerd met cijfers, 
+            letters en een vreemd karakter(!,@,#,$,%,^,&,*).
+            Het gegenereerde password moet op het scherm getoond worden.
+            Het wachtwoord moet minimaal 10 karakters hebben en maximaal 60.
+            */
+            if (submit == "Genereer wachtwoord")
+            {
+                if ((length < 10 || length > 60))
+                {
+                    ViewBag.Error = "Wachtwoord moet minimaal 10 en maximaal 60 tekens lang zijn";
+                    return View();
+                }
+                ViewBag.Password = StaticMethods.CreatePassword(length);
+            }
+            ViewBag.Length = length;
+            return View();
         }
         public IActionResult Opdracht7_12()
         {
@@ -88,7 +131,6 @@ namespace Opdrachten_C_Sharp.Controllers
             ViewBag.Decrypted = StaticMethods.Decrypt(encrypted, key);
             return View();
         }
-
         public IActionResult Opdracht7_13()
         {
             /*
@@ -119,7 +161,6 @@ namespace Opdrachten_C_Sharp.Controllers
             }
             return View();
         }
-
         public IActionResult Opdracht7_14(string submit, int balls = 6, int max = 45, bool jackpot = true)
         {
             if (!string.IsNullOrEmpty(submit))
@@ -180,8 +221,7 @@ namespace Opdrachten_C_Sharp.Controllers
 
             return View();
         }
-
-        public IActionResult Opdracht7_15(string submit , string unwanted)
+        public IActionResult Opdracht7_15(string submit, string unwanted)
         {
             /*
             Een leverancier van zuivelproducten hanteert een spaarsysteem, 
@@ -207,6 +247,7 @@ namespace Opdrachten_C_Sharp.Controllers
 
             return View();
         }
+
         /// <summary>
         /// Generates a random key.
         /// </summary>
