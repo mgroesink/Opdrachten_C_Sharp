@@ -5,26 +5,50 @@ namespace Opdrachten_C_Sharp
 {
     public static class StaticMethods
     {
+        private const string CAPITALS = "ABCDEFGHIJKLMNOPQRSTUVW";
+        private const string NONCAPITALS = "abcdefghijklmnopqrstuvwxyz";
+        private const string DIGITS = "0123456789";
+        /// <summary>
+        /// Luizenmoeder.
+        /// </summary>
+        /// <returns></returns>
         public static string LuizenMoeder()
         {
             return "Hallo allemaal wat leuk dat jullie er zijn";
         }
 
-        public static int Power(int baseNumber , int pow)
+        /// <summary>
+        /// Powers the specified base number.
+        /// </summary>
+        /// <param name="baseNumber">The base number.</param>
+        /// <param name="pow">The pow.</param>
+        /// <returns></returns>
+        public static int Power(int baseNumber, int pow)
         {
             var result = baseNumber;
-            for(int i = 1; i < pow; i++)
+            for (int i = 1; i < pow; i++)
             {
                 result *= baseNumber;
             }
             return result;
         }
 
+        /// <summary>
+        /// Adds the numbers.
+        /// </summary>
+        /// <param name="v1">The v1.</param>
+        /// <param name="v2">The v2.</param>
+        /// <returns></returns>
         public static int AddNumbers(int v1, int v2)
         {
             return v1 + v2;
         }
 
+        /// <summary>
+        /// Gets the zodiac of a specified date.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns></returns>
         public static string Zodiac(DateTime date)
         {
             Zodiacs zodiac;
@@ -91,10 +115,24 @@ namespace Opdrachten_C_Sharp
 
         }
 
+        /// <summary>
+        /// Determines whether [is leap year].
+        /// </summary>
+        /// <returns>
+        ///   <c>true</c> if [is leap year]; otherwise, <c>false</c>.
+        /// </returns>
         public static bool IsLeapYear()
         {
             return DateTime.IsLeapYear(DateTime.Now.Year);
         }
+
+        /// <summary>
+        /// Determines whether [is leap year] [the specified year].
+        /// </summary>
+        /// <param name="year">The year.</param>
+        /// <returns>
+        ///   <c>true</c> if [is leap year] [the specified year]; otherwise, <c>false</c>.
+        /// </returns>
         public static bool IsLeapYear(int year)
         {
             if (year < 50)
@@ -109,23 +147,43 @@ namespace Opdrachten_C_Sharp
             return DateTime.IsLeapYear(year);
         }
 
+        /// <summary>
+        /// Determines whether [is leap year] [the specified date].
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns>
+        ///   <c>true</c> if [is leap year] [the specified date]; otherwise, <c>false</c>.
+        /// </returns>
         public static bool IsLeapYear(DateTime date)
         {
             return DateTime.IsLeapYear(date.Year);
         }
 
+        /// <summary>
+        /// Determines whether the specified date is weekend.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified date is weekend; otherwise, <c>false</c>.
+        /// </returns>
         public static bool IsWeekend(DateTime date)
         {
             return date.DayOfWeek ==
                 DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday;
         }
 
-        public static string Encrypt(string text , int key)
+        /// <summary>
+        /// Encrypts the specified text.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
+        public static string Encrypt(string text, int key)
         {
             text = text.ToUpper();
             string alphabet = "abcdefghijklmnopqrstuvwxyz".ToUpper();
             StringBuilder encryptedText = new StringBuilder();
-            foreach(var letter in text)
+            foreach (var letter in text)
             {
                 int position = alphabet.IndexOf(letter);
                 int newPosition = (position + key) % 26;
@@ -134,6 +192,12 @@ namespace Opdrachten_C_Sharp
             return encryptedText.ToString();
         }
 
+        /// <summary>
+        /// Decrypts the specified text.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
         public static string Decrypt(string text, int key)
         {
             text = text.ToUpper();
@@ -148,16 +212,22 @@ namespace Opdrachten_C_Sharp
             return decryptedText.ToString();
         }
 
+        /// <summary>
+        /// Encrypts the specified text.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
         public static string Encrypt(string text, string key)
         {
-            StringBuilder encryptedText = new StringBuilder();  
-            for(int i = 0; i < text.Length; i++)
+            StringBuilder encryptedText = new StringBuilder();
+            for (int i = 0; i < text.Length; i++)
             {
                 int ascii1 = (int)text[i];
                 int ascii2 = (int)key[i];
                 int sum = (ascii1 + ascii2) % 256;
                 string outputHex = sum.ToString("X");
-                if(outputHex.Length == 1)
+                if (outputHex.Length == 1)
                 {
                     outputHex = "0" + outputHex;
                 }
@@ -168,13 +238,19 @@ namespace Opdrachten_C_Sharp
             return encryptedText.ToString();
         }
 
+        /// <summary>
+        /// Decrypts the specified text.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
         public static string Decrypt(string text, string key)
         {
             StringBuilder decryptedText = new StringBuilder();
-            for (int i = 0; i < text.Length; i+=2)
+            for (int i = 0; i < text.Length; i += 2)
             {
-                int ascii1 = Convert.ToInt32(text.Substring(i,2), 16);
-                int ascii2 = (int)key[i/2];
+                int ascii1 = Convert.ToInt32(text.Substring(i, 2), 16);
+                int ascii2 = (int)key[i / 2];
                 int sum = (ascii1 - ascii2 + 256) % 256;
 
                 decryptedText.Append(((char)sum).ToString());
@@ -182,6 +258,33 @@ namespace Opdrachten_C_Sharp
 
 
             return decryptedText.ToString();
+        }
+
+        /// <summary>
+        /// Gets a unique code from letters and digits.
+        /// </summary>
+        /// <param name="unwanted">The unwanted chars.</param>
+        /// <returns></returns>
+        public static string GetCode(int length, string unwanted, bool onlycaptitals = true)
+        {
+            StringBuilder sb = new StringBuilder();
+            Random r = new Random();
+            string chars = onlycaptitals ? CAPITALS + DIGITS :
+                CAPITALS + NONCAPITALS + DIGITS;
+            if (onlycaptitals)
+            {
+                unwanted = unwanted.ToUpper();
+            }
+            // Remove all unwanted characters
+            foreach (char c in unwanted)
+            {
+                chars = chars.Replace(c.ToString(), "");
+            }
+            for (int i = 0; i < length; i++)
+            {
+                sb.Append(chars[r.Next(chars.Length)]);
+            }
+            return sb.ToString();
         }
     }
 }

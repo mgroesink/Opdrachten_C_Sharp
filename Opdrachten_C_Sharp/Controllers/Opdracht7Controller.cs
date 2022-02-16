@@ -129,7 +129,7 @@ namespace Opdrachten_C_Sharp.Controllers
                         break;
 
                 }
-                if(!jackpot)
+                if (!jackpot)
                 {
                     ViewBag.Color = "black";
                     ViewBag.ForeColor = "white";
@@ -138,6 +138,38 @@ namespace Opdrachten_C_Sharp.Controllers
 
             return View();
         }
+
+        public IActionResult Opdracht7_15(string submit , string unwanted)
+        {
+            /*
+            Een leverancier van zuivelproducten hanteert een spaarsysteem, 
+            waarbij klanten die een product hebben gekocht een code kunnen 
+            invoeren op een website. Deze code bestaat uit (hoofd)letters en 
+            cijfers en de lengte van de code is 11 tekens. Echter, sommige 
+            tekens lijken teveel op elkaar en daarom worden de 
+            cijfers 0 en 1 niet gebruikt en ook de letters i en o niet.
+            
+            Aan jou de taak het programma te schrijven. 
+            Het resultaat moet een array met 11 tekens zijn en de 
+            methode kent één parameter: een array met de tekens die 
+            niet zijn toegestaan. Op die manier kan de gebruiker van 
+            het programma zelf bepalen welke tekens niet zijn toegestaan.
+            */
+
+            if (submit == "Genereer code")
+            {
+                unwanted = unwanted ?? "";
+                ViewBag.Code = StaticMethods.GetCode(11, unwanted);
+            }
+
+
+            return View();
+        }
+        /// <summary>
+        /// Generates a random key.
+        /// </summary>
+        /// <param name="length">The length.</param>
+        /// <returns></returns>
         private string RandomKey(int length)
         {
             Random rnd = new Random();

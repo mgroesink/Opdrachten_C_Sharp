@@ -115,5 +115,45 @@ namespace Opdrachten_C_Sharp.Tests
             Assert.AreEqual("HALLO", StaticMethods.Decrypt("KDOOR", 3));
             Assert.AreEqual("MAZZEL", StaticMethods.Decrypt("PDCCHO", 3));
         }
+
+        [TestMethod()]
+        public void GetCodeTest1()
+        {
+            string code = StaticMethods.GetCode(100000, "I0AE", false);
+            bool expected = true;
+            foreach(char c in "I0AE")
+            {
+                if(code.Contains(c))
+                {
+                    expected = false;
+                    break;
+                }
+            }
+            Assert.IsTrue(expected);
+        }
+
+        [TestMethod()]
+        public void GetCodeTest2()
+        {
+            string code = StaticMethods.GetCode(100000, "i0Ae", true);
+            bool expected = true;
+            foreach (char c in "I0AE")
+            {
+                if (code.Contains(c))
+                {
+                    expected = false;
+                    break;
+                }
+            }
+            Assert.IsTrue(expected);
+        }
+
+        [TestMethod()]
+        public void GetCodeTest3()
+        {
+            string code = StaticMethods.GetCode(25, "i0Ae", true);
+            int expected = 25;
+            Assert.AreEqual(expected , code.Length);
+        }
     }
 }

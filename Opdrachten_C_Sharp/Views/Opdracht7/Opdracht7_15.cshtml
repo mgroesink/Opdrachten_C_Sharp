@@ -1,0 +1,9 @@
+﻿<form>
+    Geef alle ongewenste tekens
+    <input type="text" name="unwanted"/>
+    <input type="submit" name="submit" value="Genereer code"/>
+</form>
+@if(ViewBag.Code != null)
+{
+    <h1>De code is: <b>@ViewBag.Code</b></h1>
+}
