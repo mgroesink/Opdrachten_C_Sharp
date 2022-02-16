@@ -1,0 +1,59 @@
+﻿<style>
+    .ball {
+        width: 60px;
+        height: 60px;
+        -webkit-border-radius: 60px;
+        -webkit-background-clip: padding-box;
+        -moz-border-radius: 60px;
+        -moz-background-clip: padding;
+        border-radius: 60px;
+        background-clip: padding-box;
+        margin: 7px 0 0 5px;
+        float: left;
+        background-color: @ViewBag.Color;
+        color: @ViewBag.ForeColor;
+        font-size: 36px;
+        text-align: center;
+        border: 2px solid black;
+        font-weight: bold;
+    }
+</style>
+<form>
+    <table class="table">
+        <tr>
+            <td>Hoeveel ballen zijn er</td>
+            <td>
+                <input required name="max" type="number" min="1" max="50" value="45" />
+            </td>
+        </tr>
+        <tr>
+            <td>Hoeveel ballen moeten worden gekozen</td>
+            <td>
+                <input required name="max" type="number" min="1" max="10" value="6" />
+            </td>
+        </tr>
+        <tr>
+            <td>Inclusief jackpot?</td>
+            <td>
+                <input name="jackpot" type="checkbox" checked  />
+            </td>
+        </tr>
+    </table>
+    <input type="submit" name="submit" value="Trek nummers" />
+</form>
+@if (ViewBag.Balls != null)
+{
+    <table style="margin-top:150px">
+        <tr>
+            <td colspan="@ViewBag.Balls.Length">
+                <h1>De trekking van @DateTime.Now.ToShortDateString()</h1>
+            </td>
+        </tr>
+        <tr>
+            @foreach (var ball in ViewBag.Balls)
+            {
+                <td><span class="ball">@ball</span></td>
+            }
+        </tr>
+    </table>
+}

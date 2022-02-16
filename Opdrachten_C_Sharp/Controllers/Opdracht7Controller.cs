@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 using System.Text;
 
 namespace Opdrachten_C_Sharp.Controllers
@@ -77,6 +78,66 @@ namespace Opdrachten_C_Sharp.Controllers
             return View();
         }
 
+        public IActionResult Opdracht7_14(string submit, int balls = 6, int max = 45, bool jackpot = true)
+        {
+            if (!string.IsNullOrEmpty(submit))
+            {
+
+                // Array to hold the choosen numbers
+                int[] lottery = new int[balls];
+                Random random = new Random();
+                for (int i = 0; i < balls; i++)
+                {
+                    // Get a random number
+                    int ball = random.Next(1, max + 1);
+                    if (!lottery.Contains(ball))
+                    {
+                        // Add ball to the array
+                        lottery[i] = ball;
+                    }
+                    else
+                    {
+                        // Ball is already choosen
+                        i--;
+                    }
+                }
+
+                // Sort the array from low to high
+                Array.Sort(lottery);
+                ViewBag.Balls = lottery;
+                int color = random.Next(6);
+                ViewBag.ForeColor = "black";
+                switch (color)
+                {
+                    case 0:
+                        ViewBag.Color = "yellow";
+                        break;
+                    case 1:
+                        ViewBag.Color = "red";
+                        break;
+                    case 2:
+                        ViewBag.Color = "blue";
+                        break;
+                    case 3:
+                        ViewBag.Color = "white";
+                        break;
+                    case 4:
+                        ViewBag.Color = "green";
+                        break;
+                    case 5:
+                        ViewBag.Color = "gray";
+                        break;
+
+                }
+                if(!jackpot)
+                {
+                    ViewBag.Color = "black";
+                    ViewBag.ForeColor = "white";
+                }
+            }
+
+            return View();
+        }
         private string RandomKey(int length)
         {
             Random rnd = new Random();
