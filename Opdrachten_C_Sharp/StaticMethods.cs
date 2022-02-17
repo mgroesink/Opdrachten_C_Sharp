@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RskExtensions;
+using System;
 using System.Text;
 
 namespace Opdrachten_C_Sharp
@@ -18,7 +19,6 @@ namespace Opdrachten_C_Sharp
         {
             return "Hallo allemaal wat leuk dat jullie er zijn";
         }
-
         /// <summary>
         /// Powers the specified base number.
         /// </summary>
@@ -45,7 +45,6 @@ namespace Opdrachten_C_Sharp
         {
             return v1 + v2;
         }
-
         /// <summary>
         /// Gets the zodiac of a specified date.
         /// </summary>
@@ -127,7 +126,6 @@ namespace Opdrachten_C_Sharp
         {
             return DateTime.IsLeapYear(DateTime.Now.Year);
         }
-
         /// <summary>
         /// Determines whether [is leap year] [the specified year].
         /// </summary>
@@ -148,7 +146,6 @@ namespace Opdrachten_C_Sharp
 
             return DateTime.IsLeapYear(year);
         }
-
         /// <summary>
         /// Determines whether [is leap year] [the specified date].
         /// </summary>
@@ -173,7 +170,6 @@ namespace Opdrachten_C_Sharp
             return date.DayOfWeek ==
                 DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday;
         }
-
         /// <summary>
         /// Encrypts the specified text.
         /// </summary>
@@ -193,27 +189,6 @@ namespace Opdrachten_C_Sharp
             }
             return encryptedText.ToString();
         }
-
-        /// <summary>
-        /// Decrypts the specified text.
-        /// </summary>
-        /// <param name="text">The text.</param>
-        /// <param name="key">The key.</param>
-        /// <returns></returns>
-        public static string Decrypt(string text, int key)
-        {
-            text = text.ToUpper();
-            string alphabet = "abcdefghijklmnopqrstuvwxyz".ToUpper();
-            StringBuilder decryptedText = new StringBuilder();
-            foreach (var letter in text)
-            {
-                int position = alphabet.IndexOf(letter);
-                int newPosition = (position - key + 26) % 26;
-                decryptedText.Append(alphabet[newPosition].ToString());
-            }
-            return decryptedText.ToString();
-        }
-
         /// <summary>
         /// Encrypts the specified text.
         /// </summary>
@@ -238,6 +213,25 @@ namespace Opdrachten_C_Sharp
 
 
             return encryptedText.ToString();
+        }
+        /// <summary>
+        /// Decrypts the specified text.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
+        public static string Decrypt(string text, int key)
+        {
+            text = text.ToUpper();
+            string alphabet = "abcdefghijklmnopqrstuvwxyz".ToUpper();
+            StringBuilder decryptedText = new StringBuilder();
+            foreach (var letter in text)
+            {
+                int position = alphabet.IndexOf(letter);
+                int newPosition = (position - key + 26) % 26;
+                decryptedText.Append(alphabet[newPosition].ToString());
+            }
+            return decryptedText.ToString();
         }
 
         /// <summary>
@@ -288,6 +282,27 @@ namespace Opdrachten_C_Sharp
             return sb.ToString();
         }
 
+        public static bool CheckBsn(string? bsn)
+        {
+            // Check for the correct length
+            if(bsn.Length != 9)
+            {
+                return false;
+            }
+            // Check for numeric
+            if(!bsn.IsNumeric())
+            {
+                return false;
+            }
+            // Eleven test
+            int sum = 0;
+            for(int i = 0; i < bsn.Length - 1; i++)
+            {
+                sum += (9 - i) * int.Parse(bsn[i].ToString());
+            }
+            sum -= int.Parse(bsn[8].ToString());
+            return sum % 11 == 0;
+        }
         /// <summary>
         /// Creates a random password.
         /// </summary>
@@ -344,6 +359,24 @@ namespace Opdrachten_C_Sharp
         {
             string chars = "!@#$%&*";
             return chars[r.Next(chars.Length)];
+        }
+
+        /// <summary>
+        /// Get array of [amount] integers between [minimum] and [maximum].
+        /// </summary>
+        /// <param name="amount">Amount of numbers.</param>
+        /// <param name="min">The minimum.</param>
+        /// <param name="max">The maximum.</param>
+        /// <returns></returns>
+        public static int[] RandomIntegerArray(int amount, 
+            int min = int.MinValue, int max = int.MaxValue - 1)
+        {
+            int[] numbers = new int[amount];
+            for(int i = 0; i < amount; i++)
+            {
+                numbers[i] = r.Next(min, max + 1);
+            }
+            return numbers;
         }
     }
 }

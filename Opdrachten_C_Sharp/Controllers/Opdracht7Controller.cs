@@ -97,6 +97,35 @@ namespace Opdrachten_C_Sharp.Controllers
             ViewBag.Length = length;
             return View();
         }
+        public IActionResult Opdracht7_5()
+        {
+            /*
+            Maak een functie die controleert of een BSN-nummer 
+            dat door de gebruiker wordt ingevoerd een geldig BSN Nummer is. 
+            De controle kun je uitvoeren met een ELF Proef. 
+            Alleen wordt bij een BSN-nummer het laatste getal van de 9 getallen 
+            niet met 1 vermenigvuldigd maar met –1. 
+            Ben je niet bekend met de elf proef? Zoek dit dan eerst op.
+            */
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Opdracht7_5(string bsn)
+        {
+            ViewBag.Valid = StaticMethods.CheckBsn(bsn);
+            ViewBag.bsn = bsn;
+            return View();
+        }
+        public IActionResult Opdracht7_6()
+        {
+            /*
+            Schrijf een programma dat een array weergeeft in omgekeerde volgorde. 
+            Vul de array met 25 random getallen tussen 10 en 100. 
+            Toon in je uitvoer ook de inhoud van de oorspronkelijke array. 
+            */
+            int[] numbers = StaticMethods.RandomIntegerArray(25, 11, 99);
+            return View(numbers);
+        }
         public IActionResult Opdracht7_12()
         {
             /*
@@ -121,7 +150,6 @@ namespace Opdrachten_C_Sharp.Controllers
 
             return View();
         }
-
         [HttpPost]
         public IActionResult Opdracht7_12(string password = "", int key = 0)
         {
@@ -144,7 +172,6 @@ namespace Opdrachten_C_Sharp.Controllers
 
             return View();
         }
-
         [HttpPost]
         public IActionResult Opdracht7_13(string text = "")
         {

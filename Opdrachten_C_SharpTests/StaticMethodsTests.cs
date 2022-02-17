@@ -121,9 +121,9 @@ namespace Opdrachten_C_Sharp.Tests
         {
             string code = StaticMethods.GetCode(100000, "I0AE", false);
             bool expected = true;
-            foreach(char c in "I0AE")
+            foreach (char c in "I0AE")
             {
-                if(code.Contains(c))
+                if (code.Contains(c))
                 {
                     expected = false;
                     break;
@@ -153,7 +153,59 @@ namespace Opdrachten_C_Sharp.Tests
         {
             string code = StaticMethods.GetCode(25, "i0Ae", true);
             int expected = 25;
-            Assert.AreEqual(expected , code.Length);
+            Assert.AreEqual(expected, code.Length);
+        }
+
+        [TestMethod()]
+        public void CheckBsnTestLength()
+        {
+            // Check for the correct length
+            string bsn = "690226640";
+            Assert.IsTrue(StaticMethods.CheckBsn(bsn));
+            bsn = "6902266401";
+            Assert.IsFalse(StaticMethods.CheckBsn(bsn));
+            bsn = "69022640";
+            Assert.IsFalse(StaticMethods.CheckBsn(bsn));
+        }
+        [TestMethod()]
+        public void CheckBsnTestNumeric()
+        {
+            // Check for numeric 
+            string bsn = "690226640";
+            Assert.IsTrue(StaticMethods.CheckBsn(bsn));
+            bsn = "6902a6640";
+            Assert.IsFalse(StaticMethods.CheckBsn(bsn));
+        }
+        [TestMethod()]
+        public void CheckBsnTestElevenCheck()
+        {
+            // Check for the correct length
+            string bsn = "690226640";
+            Assert.IsTrue(StaticMethods.CheckBsn(bsn));
+            bsn = "690262640";
+            Assert.IsFalse(StaticMethods.CheckBsn(bsn));
+            bsn = "690236640";
+            Assert.IsFalse(StaticMethods.CheckBsn(bsn));
+        }
+
+        [TestMethod()]
+        public void RandomIntegerArrayTestLength()
+        {
+            Assert.AreEqual(99 , StaticMethods.RandomIntegerArray(99).Length);
+        }
+        [TestMethod()]
+        public void RandomIntegerArrayTestCheckNumbers()
+        {
+            int[] numbers = StaticMethods.RandomIntegerArray(10000,100,999);
+            bool validNumbers = true;
+            foreach (var item in numbers)
+            {
+                if(item < 100 || item > 999)
+                {
+                    validNumbers = false;
+                }
+            }
+            Assert.IsTrue(validNumbers);
         }
     }
 }

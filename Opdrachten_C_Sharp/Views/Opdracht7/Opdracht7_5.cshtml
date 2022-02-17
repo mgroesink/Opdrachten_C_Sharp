@@ -1,0 +1,17 @@
+﻿<form method="post">
+    Geef het te controleren Burger Service Nummer (BSN)
+    <input name="bsn" value="@ViewBag.bsn" type="text" />
+    <input type="submit" value="Controleer" />
+</form>
+@if (ViewBag.Valid != null)
+{
+    if (ViewBag.Valid)
+    {
+        <div class="alert-info"><h2>Dit burger service nummer is geldig</h2></div>
+    }
+    else
+    {
+        <div class="alert-danger"><h2>Dit burger service nummer is NIET geldig</h2></div>
+    }
+}
+
