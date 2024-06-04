@@ -5,6 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Models\Block2\" />
+    <Folder Include="Models\Block3\" />
+    <Folder Include="Models\Block4\" />
+    <Folder Include="Models\Block5\" />
+    <Folder Include="Models\Block6\" />
+    <Folder Include="Models\Block7\" />
+    <Folder Include="Models\Block8\" />
+    <Folder Include="Models\Block9\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

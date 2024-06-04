@@ -1,0 +1,32 @@
+﻿@model Opdrachten_C_Sharp.Models.Block1.Me
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+</style>
+<h1>My personal info</h1>
+<table>
+    <tr>
+        <td>Name:</td>
+        <td>@Model.FullName</td>
+    </tr>
+    <tr>
+        <td>Address:</td>
+        <td>@Model.Address<br />
+            @Model.PostalCode @Model.City
+        </td>
+    </tr>
+    <tr>
+        <td>Age:</td>
+        <td>@Model.Age</td>
+    </tr>
+</table>

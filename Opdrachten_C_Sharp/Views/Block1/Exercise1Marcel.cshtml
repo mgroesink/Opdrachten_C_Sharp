@@ -1,0 +1,34 @@
+﻿@model Opdrachten_C_Sharp.Models.Block1.Me
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 2px dashed purple;
+    }
+
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+</style>
+<h1>Mijn informatie</h1>
+<table>
+    <tr>
+        <td>Naam:</td>
+        <td>@Model.FullName</td>
+    </tr>
+    <tr>
+        <td>Adres:</td>
+        <td>@Model.Address</td>
+    </tr>
+    <tr>
+        <td>Postcode en woonplaats</td>
+        <td>@Model.PostalCode @Model.City</td>
+    </tr>
+    <tr>
+        <td>Leeftijd:</td>
+        <td>@Model.Age</td>
+    </tr>
+</table>
