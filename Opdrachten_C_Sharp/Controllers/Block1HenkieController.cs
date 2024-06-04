@@ -40,6 +40,14 @@ namespace Opdrachten_C_Sharp.Controllers
 
              */
 
+            henkie.FirstName = "Henkie";
+            henkie.MiddleName = "van";
+            henkie.LastName = "Leeuwen";
+            henkie.Address = "Laan van Scherpzicht 25";
+            henkie.PostalCode = "7890DW";
+            henkie.City = "Scherpenzeel";
+            henkie.Age = 30;
+
             return View(henkie);
         }
     }

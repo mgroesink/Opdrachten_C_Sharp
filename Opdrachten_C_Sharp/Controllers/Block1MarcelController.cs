@@ -40,6 +40,13 @@ namespace Opdrachten_C_Sharp.Controllers
 
              */
 
+            marcel.FirstName = "Marcel";
+            marcel.LastName = "Bosman";
+            marcel.Address = "Laan van Scherpzicht 23";
+            marcel.PostalCode = "7890DW";
+            marcel.City = "Scherpenzeel";
+            marcel.Age = 66;
+
             return View(marcel);
         }
     }

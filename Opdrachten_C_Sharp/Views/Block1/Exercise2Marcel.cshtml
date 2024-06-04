@@ -1,0 +1,19 @@
+﻿@model Opdrachten_C_Sharp.Models.Block1.Me
+
+@{
+    ViewData["Title"] = "Opdracht 2";
+    string name = Model.FullName.PadRight(45, '*');
+    string stars = new string('*', Model.FullName.Length + 10);
+}
+
+<style>
+    .code {
+        font-family: 'Courier New', Courier, monospace;
+    }
+</style>
+
+<div class="code">
+    <p>@stars</p>
+    <p>**** @Model.FullName ****</p>
+    <p>@stars</p>
+</div>
