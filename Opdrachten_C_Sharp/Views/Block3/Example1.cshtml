@@ -1,0 +1,73 @@
+﻿@model Opdrachten_C_Sharp.Models.Block3.PasswordOptions
+@{
+    ViewData["Title"] = "Exercise1";
+    string exerciseText = "Maak een web applicatie die de gebruiker de mogelijkheid geeft een wachtwoord te genereren.";
+    exerciseText += "De gebruiker voert zelf de volgende eisen in voor het wachtwoord:";
+    exerciseText += "<ul>";
+    exerciseText += "<li>Minimum lengte: een waarde tussen 6 en 50</li>";
+    exerciseText += "<li>Aantal gewenste hoofdletters: een waarde tussen 1 en 5";
+    exerciseText += "<li>Aantal gewenste kleine letters: een waarde tussen 1 en 5</li>";
+    exerciseText += "<li>Aantal gewenste cijfers: een waarde tussen 1 en 5</li>";
+    exerciseText += "<li>Aantal gewenste speciale tekens (een van de volgende tekens: <i>+-=%@$&?!</i>): een waarde tussen 0 en 5</li>";
+    exerciseText += "</ul>";
+    exerciseText += "Als invoer ongeldig is dient een duidelijke foutmelding voor de gebruiker te verschijnen op de pagina. ";
+    exerciseText += "De tekens van het gegenereerde wachtwoord moeten in willekeurige volgorde staan, dus niet eerst alle hoofdletters, dan de kleine letters, cijfers en speciale tekens.";
+    
+    string exerciseTitle = "Voorbeeld blok 3";
+}
+
+<div class="container">
+    <button class="btn btn-primary" onclick="openModal('@exerciseTitle', '@exerciseText')">Toon opdracht</button>
+</div>
+<hr/>
+<h2>Wachtwoord Generator</h2>
+
+<form asp-action="Example1" method="post">
+    <table class="table">
+    <tr>
+            <td style="width:40%"><label for="MinLength">Minimum lengte (6-50)</label></td>
+            <td style="width:10%"><input type="number" asp-for="MinLength" class="form-control" value="@Model.MinLength"/></td>
+            <td style="width:50%"><span asp-validation-for="MinLength" class="text-danger"></span></td>
+    </tr>
+
+        <tr>
+            <td style="width:40%"><label for="UppercaseLetters">Gewenste hoofdletters (1-5)</label></td>
+            <td style="width:10%"><input type="number" asp-for="UppercaseLetters" class="form-control" value="@Model.UppercaseLetters" /></td>
+            <td style="width:50%"><span asp-validation-for="UppercaseLetters" class="text-danger"></span></td>
+        </tr>
+        <tr>
+            <td style="width:40%"><label for="LowercaseLetters">Gewenste kleine letters (1-5)</label></td>
+            <td style="width:10%"><input type="number" asp-for="LowercaseLetters" class="form-control" value="@Model.LowercaseLetters" /></td>
+            <td style="width:50%"><span asp-validation-for="LowercaseLetters" class="text-danger"></span></td>
+        </tr>
+        <tr>
+            <td style="width:40%"><label for="Digits">Gewenste cijfers (1-5)</label></td>
+            <td style="width:10%"><input type="number" asp-for="Digits" class="form-control" value="@Model.Digits" /></td>
+            <td style="width:50%"><span asp-validation-for="Digits" class="text-danger"></span></td>
+        </tr>
+        <tr>
+            <td style="width:40%"><label for="SpecialCharacters">Gewenste speciale tekens (+-=%@@$&?!)</label></td>
+            <td style="width:10%"><input type="number" asp-for="SpecialCharacters" class="form-control" value="@Model.SpecialCharacters"/></td>
+            <td style="width:50%"><span asp-validation-for="SpecialCharacters" class="text-danger"></span></td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-primary">Genereer Wachtwoord</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.GeneratedPassword))
+{
+    <h3>Gegenereerd Wachtwoord:</h3>
+    <p>@Model.GeneratedPassword</p>
+}
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        <strong>Fout:</strong> @Model.ErrorMessage
+    </div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

@@ -73,3 +73,7 @@ body {
 .dropdown {
     margin: 0px 2px;
 }
+
+input[type=number] {
+    text-align:center;
+}
