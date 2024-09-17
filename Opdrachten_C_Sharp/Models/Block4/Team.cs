@@ -1,4 +1,6 @@
-﻿namespace Opdrachten_C_Sharp.Models.Block4
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Opdrachten_C_Sharp.Models.Block4
 {
     public class Team
     {
@@ -8,6 +10,7 @@
         /// <value>
         /// The name.
         /// </value>
+        [Required(ErrorMessage="{0} is een verplicht veld")]
         public string Name { get; set; }
     }
 }

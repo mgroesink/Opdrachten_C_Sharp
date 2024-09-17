@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Opdrachten_C_Sharp.Models.Block4;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Opdrachten_C_Sharp.Controllers
 {
@@ -30,14 +31,14 @@ namespace Opdrachten_C_Sharp.Controllers
         };
         public IActionResult Example1()
         {
-            ViewBag.Teams = teams;
+            ViewBag.Teams = teams.OrderBy(t=>t.Name);
             return View(new MatchResult());
         }
 
         [HttpPost]
         public IActionResult Example1(MatchResult result)
         {
-            ViewBag.Teams = teams;
+            ViewBag.Teams = teams.OrderBy(t => t.Name);
             if (result.HomeTeam.Name == result.AwayTeam.Name)
             {
                 ModelState.AddModelError("HomeTeam", "Thuis en uit team mogen niet hetzelfde zijn");
