@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Block4\" />
     <Folder Include="Models\Block5\" />
     <Folder Include="Models\Block6\" />
     <Folder Include="Models\Block7\" />

@@ -1,0 +1,90 @@
+﻿@model Opdrachten_C_Sharp.Models.Block4.MatchResult
+@{
+    ViewData["Title"] = "Exercise1";
+    string exerciseText = "Maak een web applicatie waarbij de gebruiker 2 voetbalteams kan selecteren uit een dropdownlist, een voor de thuis spelende ploeg en een voor de uit spelende ploeg.";
+    exerciseText += "Vervolgens kan de uitslag van de wedstrijd worden ingevoerd.";
+    exerciseText += "Op basis van de uitslag krijgt een team:";
+    exerciseText += "<ul>";
+    exerciseText += "<li>3 punten bij een overwinning</li>";
+    exerciseText += "<li>1 punt bij een gelijkspel";
+    exerciseText += "<li>0 punten bij een nederlaag</li>";
+    exerciseText += "<li>Aantal gewenste cijfers: een waarde tussen 1 en 5</li>";
+    exerciseText += "<li>Aantal gewenste speciale tekens (een van de volgende tekens: <i>+-=%@$&?!</i>): een waarde tussen 0 en 5</li>";
+    exerciseText += "</ul>";
+    exerciseText += "Na het klikken op een button wordt weergegeven hoeveel punten elk van de teams krijgt.";
+
+    string exerciseTitle = "Voorbeeld blok 4";
+}
+<style>
+    td {
+        padding: 10px;
+    }
+</style>
+<div class="container">
+    <button class="btn btn-primary" onclick="openModal('@exerciseTitle', '@exerciseText')">Toon opdracht</button>
+</div>
+<hr />
+
+<h2>Eredivisie 2024-2025</h2>
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @Html.ValidationSummary(false)
+    </div>
+}
+<form asp-action="Example1" method="post">
+    <table>
+        <tr>
+            <td><label for="MatchDate">Datum</label></td>
+            <td><input asp-for="MatchDate" /></td>
+        </tr>
+
+        <tr>
+            <td><label for="HomeTeam">Thuisploeg</label></td>
+            <td><select asp-for="HomeTeam.Name" asp-items="@(new SelectList(ViewBag.Teams, "Name", "Name"))"></select></td>
+        </tr>
+
+        <tr>
+            <td><label for="AwayTeam">Uitploeg</label></td>
+            <td><select asp-for="AwayTeam.Name" asp-items="@(new SelectList(ViewBag.Teams, "Name", "Name"))"></select></td>
+        </tr>
+
+        <tr>
+            <td><label for="HomeTeamGoals">Thuisploeg Goals</label></td>
+            <td><input asp-for="HomeTeamGoals" type="number" /></td>
+        </tr>
+
+        <tr>
+            <td><label for="AwayTeamGoals">Uitploeg Goals</label></td>
+            <td><input asp-for="AwayTeamGoals" type="number" /></td>
+        </tr>
+    </table>
+    <button class="btn btn-primary" type="submit">Uitslag Invoeren</button>
+</form>
+
+@if (Model.HomeTeam != null && Model.AwayTeam != null && (Model.HomeTeamPoints > 0 || Model.AwayTeamPoints > 0))
+{
+    <h4>Resultaat:</h4>
+    @if (@Model.HomeTeamPoints == 1)
+    {
+        <p>@Model.HomeTeam.Name krijgt @Model.HomeTeamPoints punt</p>
+
+    }
+    else
+    {
+        <p>@Model.HomeTeam.Name krijgt @Model.HomeTeamPoints punten</p>
+
+    }
+    @if (@Model.AwayTeamPoints == 1)
+    {
+        <p>@Model.AwayTeam.Name krijgt @Model.AwayTeamPoints punt</p>
+
+    }
+    else
+    {
+        <p>@Model.AwayTeam.Name krijgt @Model.AwayTeamPoints punten</p>
+
+    }
+}
+
+
