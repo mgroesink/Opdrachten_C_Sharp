@@ -1,0 +1,77 @@
+﻿@model Opdrachten_C_Sharp.Models.Block2.Pizza
+@{
+    ViewData["Title"] = "Exercise1";
+    string exerciseText = "Een pizzeria verkoopt pizza’s is verschillende maten en met verschillende toppings. De klant kan kiezen uit de volgende formaten:";
+    exerciseText += "<ul>";
+    exerciseText += "<li>Small: € 5,00</li>";
+    exerciseText += "<li>Medium: € 6,00</li>";
+    exerciseText += "<li>Large: € 7,50</li>";
+    exerciseText += "</ul>";
+    exerciseText += "Verder kunnen de volgende toppings worden gekozen:";
+    exerciseText += "<ul>";
+    exerciseText += "<li>Salami - € 0,50</li>";
+    exerciseText += "<li>Spek - € 0,50</li>";
+    exerciseText += "<li>Ham - € 0,50</li>";
+    exerciseText += "<li>Ei - € 1,00</li>";
+    exerciseText += "<li>Ananas - € 0,75</li>";
+    exerciseText += "<li>Olijf - € 0,25</li>";
+    exerciseText += "<li>Kip - € 0,50</li>";
+    exerciseText += "</ul>";
+    exerciseText += "Maak een ASP.NET Core web applicatie waar de gebruiker een pizza kan bestellen. Nadat op een bestelknop is geklikt wordt de totaalprijs van de pizza getoond. ";
+    string exerciseTitle = "Voorbeeld blok 2";
+}
+
+<div class="container">
+    <button class="btn btn-primary" onclick="openModal('@exerciseTitle', '@exerciseText')">Toon opdracht</button>
+</div>
+
+<hr />
+<div>
+    <h2>Stel zelf uw pizza samen</h2>
+    <img src="~/images/OrderPizza.jpg" style="width:125px;height:125px;margin:25px 0 25px 100px" alt="Pizza"/>
+    <form asp-action="Example1" method="post">
+        <div>
+            <h4>Kies het gewenste formaat:</h4>
+            <table>
+                <tr>
+                    <td style="padding:10px">
+                        <input type="radio" asp-for="Size" value="Small" checked/> Small - € 5,00
+                    </td>
+                    <td style="padding:10px">
+                        <input type="radio" asp-for="Size" value="Medium" /> Medium - € 6,00
+                    </td>
+                    <td style="padding:10px">
+                        <input type="radio" asp-for="Size" value="Large" /> Large - € 7,50
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <div>
+            <h4>Kies de gewenste toppings:</h4>
+            <table>
+                <tr>
+                    <td style="padding:10px"><input type="checkbox" asp-for="Salami" /> Salami - € 0,50</td>
+                    <td style="padding:10px"><input type="checkbox" asp-for="Speck" /> Spek - € 0,50</td>
+                    <td style="padding:10px"><input type="checkbox" asp-for="Ham" /> Ham - € 0,50</</td>
+                </tr>
+                <tr>
+                <td style="padding:10px"><input type="checkbox" asp-for="Egg" /> Ei - € 1,00</td>
+                <td style="padding:10px"><input type="checkbox" asp-for="Ananas" /> Ananas - € 1,00</td>
+                </tr>
+                <tr>
+                <td style="padding:10px"><input type="checkbox" asp-for="Olive" /> Olijf - € 0,25</td>
+                <td style="padding:10px"><input type="checkbox" asp-for="Chicken" /> Kip - € 0,50</td>
+                </tr>
+            </table>
+        </div>
+
+        <button style="margin:25px" type="submit" class="btn btn-info">Bevestig uw keuze</button>
+    </form>
+</div>
+
+@if (ViewBag.TotalPrice != null)
+{
+    <h3>Totale prijs: € @ViewBag.TotalPrice</h3>
+}
+

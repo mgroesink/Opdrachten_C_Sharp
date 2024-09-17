@@ -8,6 +8,26 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
+    <!-- Modal in layout -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalBodyContent">
+                    <!-- Hier komt de dynamische tekst -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -37,9 +57,9 @@
                                 Blok 2
                             </button>
                             <ul class="dropdown-menu">
-                                @*<li><a asp-controller="Block2" asp-action="Exercise1">Opdracht1</a></li>
-                                <li><a asp-controller="Block2" asp-action="Exercise2">Opdracht2</a></li>*@
-                            </ul>
+                                <li><a asp-controller="Block2" asp-action="Example1">Voorbeeld</a></li>
+@*                                 <li><a asp-controller="Block2" asp-action="Exercise2">Opdracht2</a></li>
+ *@                            </ul>
                         </li>
                         <li class="dropdown">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -123,6 +143,15 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        function openModal(title, message) {
+            // Plaats de opgegeven tekst in de modal
+            document.getElementById('modalLabel').textContent = title;
+            document.getElementById('modalBodyContent').innerHTML = message;
+            // Open de modal
+            $('#myModal').modal('show');
+        }
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
